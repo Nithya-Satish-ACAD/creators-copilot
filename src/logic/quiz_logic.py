@@ -12,7 +12,7 @@ def load_quiz_prompt():
         return json.load(f)
 
 def build_quiz_prompt(template, topic, bloom_level):
-    return template.replace("{{topic}}", topic).replace("{{bloom_level}}", bloom_level)
+    return template.replace("{{syllabus}}", syllabus).replace("{{format}}", format)
 
 def generate_quiz(prompt_text):
     response = client.chat.completions.create(

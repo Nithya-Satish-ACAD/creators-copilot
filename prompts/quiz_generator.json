@@ -1,8 +1,8 @@
 {
   "id": "quiz_maker_v1",
-  "description": "Generates 5 MCQs for a given concept and Bloom's level.",
-  "prompt_template": "You are an AI-powered educator assistant. Create 5 multiple-choice questions for the topic '{{topic}}'. Each question must:\n\n- Align with Bloom's level: '{{bloom_level}}'\n- Provide 4 options\n- Highlight the correct option clearly\n- Ensure no repetition or ambiguity\n\nReturn the output in a clear, readable format using Markdown or a table.",
-  "input_variables": ["topic", "bloom_level"],
+  "description": "Generate MCQ quiz given the syllabus and format.",
+  "prompt_template": "You specialise in creating quizzes for undergraduate-level university courses. Ask the user to upload a syllabus, course outline, or learning resource. Based on this, generate a set of multiple-choice questions that comprehensively assess student understanding. Your task is to generate an MCQ quiz for the syllabus {{syllabus}} using the format {{format}}. Each question should include one correct answer and three distinct, plausible distractors. Label options as A, B, C, and D, with the correct answer randomized in position. End with the correct answer and a one-line explanation. Quality Guidelines: Every question must be aligned with the uploaded learning resource. Avoid questions or terminology outside the scope of the uploaded learning resource. Use clear, concise language suitable for the stated or inferred level. Ensure variety in question structure to assess different cognitive skills. Avoid repetition or overly similar questions.",
+  "input_variables": ["syllabus", "format"],
   "model": "gpt-4",
   "output_type": "text"
 }
