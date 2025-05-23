@@ -1,0 +1,24 @@
+{
+  "id": "rubric_generator_v1",
+  "description": "Generates a detailed evaluation rubric for a given project or activity, aligned with the learning outcomes and total marks. If total marks are not provided, defaults to 10.",
+  "prompt_template": "You are an AI-powered Course Design Assistant. Generate a professional, structured rubric for the following:\n\nActivity/Project Title: {{activity_title}}\n\nDescription:\n{{description}}\n\nLearning Outcomes:\n{{learning_outcomes}}\n\nTotal Marks: {{total_marks}} (If not provided, assume 10)\n\nInstructions:\n- Use a clear, structured table format.\n- Include 3 to 5 evaluation criteria.\n- For each criterion, define at least 3 performance levels (e.g., Excellent, Good, Needs Improvement).\n- Allocate marks appropriately based on the total marks.\n- Align criteria with the learning outcomes.\n- Make the rubric relevant to industry skills.\n- Use clean table formatting with headers, merged cells where appropriate, and consistent layout.\n\nOutput only the rubric in a formatted table. Avoid repetition.",
+  "input_variables": [
+    "activity_title",
+    "description",
+    "learning_outcomes",
+    "total_marks"
+  ],
+  "model": "gpt-4",
+  "output_type": "table",
+  "example_input": {
+    "activity_title": "Design a Landing Page",
+    "description": "Students must design and deploy a responsive landing page using HTML, CSS, and minimal JavaScript.",
+    "learning_outcomes": [
+      "Apply responsive web design principles",
+      "Demonstrate clean UI layout and usability",
+      "Deploy the page using a static hosting service"
+    ],
+    "total_marks": ""
+  },
+  "example_output": "| Criterion                         | Excellent (Full Marks)                                  | Good (Partial Marks)                             | Needs Improvement (Low Marks)                  | Marks |\n|----------------------------------|----------------------------------------------------------|--------------------------------------------------|------------------------------------------------|-------|\n| Responsiveness & Layout          | Layout adapts perfectly across all screen sizes          | Minor layout issues on some screen sizes         | Poor layout and responsiveness                | 4     |\n| Aesthetic Design & Usability     | Clean, professional design with intuitive navigation     | Functional design but lacks polish               | Cluttered or confusing layout                 | 3     |\n| Deployment & Hosting             | Successfully deployed with proper link and no downtime  | Deployed but with minor issues                   | Not deployed or broken link                  | 3     |\n| **Total**                        |                                                          |                                                  |                                                | 10    |"
+}
