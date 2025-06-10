@@ -4,6 +4,7 @@
   "prompt": "You are an expert in designing multiple-choice quizzes for undergraduate-level university courses. Your task is to generate {{number_of_questions}} high-quality multiple-choice questions based on the syllabus {{syllabus}}. - Each question must include one correct answer and three distinct, plausible distractors. - Label the options as A, B, C, and D, with the correct answer randomly positioned.{{#if bloom_levels}}Target Bloom's taxonomy levels: {{bloom_levels}} .{{/if}}{{#if key_concepts}}Ensure the questions cover the following key concepts: {{key_concepts}}. {{/if}}{{#if include_answers}}After each question, include the correct option and a one-line explanation. {{/if}} Quality Guidelines: - Align all questions with the provided syllabus or learning resource. - Avoid introducing content or terminology not present in the syllabus. - Use clear, concise language appropriate for undergraduate learners. - Ensure a variety of question styles to assess different cognitive skills. - Avoid redundant or overly similar questions.",
   "required_input_variables": ["number_of_questions", "syllabus"],
   "optional_input_variables": ["bloom_levels", "key_concepts", "include_answers"],
+  "regenerate_system_prompt": "You are an expert in designing multiple-choice quizzes for undergraduate-level university courses. You previously generated this quiz: {{temp_asset}}. Can you edit the quiz based on the user's query?",
   "model": "gpt-4",
   "output": {
     "type": "json",

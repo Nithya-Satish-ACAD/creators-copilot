@@ -8,9 +8,16 @@ def render_with_pybars(template_str, context):
 
 def parse_prompt_template(prompt_template_file, user_input):
     # Assume user_input is a dictionary with the required key-value pairs
-    
     with open(f"prompts/{prompt_template_file}.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     prompt = data.get("prompt")
     subbed_prompt = render_with_pybars(prompt, user_input)
     return subbed_prompt
+
+def parse_regen_system_prompt_template(prompt_template_file, temp_asset):
+    with open(f"prompts/{prompt_template_file}.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    prompt = data.get("regenerate_system_prompt")
+    subbed_prompt = render_with_pybars(prompt, temp_asset)
+    return subbed_prompt
+    
