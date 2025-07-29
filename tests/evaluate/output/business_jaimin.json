@@ -1,0 +1,102 @@
+[
+  {
+    "question_number": 1,
+    "question": "Define contract. What are the essential elements of a valid contract?",
+    "answer": "A contract is a legally binding agreement between\n2 or more parties, enforceable by law. Essential elements of a contract include:\n\u2192 offer & Acceptance - Valid offer by one party and\nacceptance by the other.\n\u2192 Lawful consideration - Something of value exchanged\nbetween both parties\n\u2192 Capacity of Parties - Parties must be competent.\n\u2192Free consent - Consent must be given without coercion,\nundue influence, fraud, misinterpretation or\nmistake.\n\u2192 Lawful object - The object of contract must be legal.\n\u2192 Certainty & Possibility of performance - Terms must be\nclear & enforceable.\n\u2192 Not declared void - The agreement shouldn\u2019t be\ndeclared void by law.\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 4,
+    "text_feedback": "Excellent answer. The student provides a clear definition of contract and lists all essential elements, including offer and acceptance, lawful consideration, capacity, free consent, lawful object, certainty, and not being declared void. The answer is comprehensive and accurate.",
+    "improvement_suggestions": "For even greater clarity, mention 'intention to create legal relations' explicitly, as it is often highlighted as a separate essential element."
+  },
+  {
+    "question_number": 2,
+    "question": "Explain the rights of an unpaid seller under the Sale of Goods Act, 1930.",
+    "answer": "Unpaid seller is someone who hasn\u2019t received\nfull payment for the trade. The rights include:\n\u2192 Right of Lien - Retaining possession of goods\nuntil payment is made\n\u2192 Right of stoppage in transit - If buyer becomes\ninsolvent & stoppage of goods in transit is permitted\n\u2192 Right of resale - Seller can resell goods under certain\nconditions.\n\u2192 Right to pursue price - Seller can sue if the buyer\nrefuses to pay.\n\u2192 Right to sue for damages - If buyer wrongfully\nrefuses to accept goods, seller can claim for damages.\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 4,
+    "text_feedback": "Comprehensive and accurate answer. The student correctly explains the rights of an unpaid seller, including right of lien, stoppage in transit, resale, and suing for price/damages. The answer covers all key points required by the marking scheme.",
+    "improvement_suggestions": "To further strengthen the answer, briefly define 'unpaid seller' at the start and mention that these rights are as per the Sale of Goods Act, 1930."
+  },
+  {
+    "question_number": 3,
+    "question": "What are the different types of contracts? Explain with examples.",
+    "answer": "Contracts are classified based on validity,\nformation & performance:\nValidity\n\u2192Valid contract - Legally enforceable (e.g. Sale of goods).\n\u2192 Void contract - Initially valid but becomes unenforceable\ndue to change in law (e.g. contract made\nunder coercion.\n\u2192 Illegal contract - Unlawful & punishable (e.g. Contract\nfor smuggling).\nFormation\n\u2192 Express contract - Terms stated explicitly (e.g. written\nagreement)\n\u2192 Implied contract - Terms inferred from contract (e.g.taking a taxi).\nPeformance\n\u2192 Executed contract - Fully performed (e.g. Payment made\nfor goods received).\n---",
+    "max_marks": 4,
+    "score_manual": 3.0,
+    "score": 3,
+    "text_feedback": "Good attempt. The student explains types of contracts based on validity, formation, and performance, and provides relevant examples. However, the answer omits unilateral and bilateral contracts, which are specifically mentioned in the marking scheme.",
+    "improvement_suggestions": "Include a brief explanation and example of unilateral and bilateral contracts to make the answer fully complete."
+  },
+  {
+    "question_number": 4,
+    "question": "Explain the concept of consumer protection and the rights of consumers\nunder the Consumer Protection Act, 2019.",
+    "answer": "Consumer protection refers to laws safeguarding\nbuyers against unfair trade practices & defects\nin goods/services. Rights granted are:\n\u2192 Right to safety - Protection from hazardous goods.\n\u2192 Right to Information - Access to complete product details\n\u2192 Right to choose - Freedom to select from variety of\nproducts.\n\u2192 Right to be heard - Consumers can file complaints.\n\u2192 Right to seek redressal - Compensation for defective\ngoods/services.\n\u2192 Right to consumer education - Awareness about consumer rights.\n---",
+    "max_marks": 4,
+    "score_manual": 3.0,
+    "score": 4,
+    "text_feedback": "Excellent answer. The student explains the concept of consumer protection and lists the rights of consumers under the Act, including safety, information, choice, being heard, redressal, and education. The answer is thorough and meets all marking scheme requirements.",
+    "improvement_suggestions": "For further improvement, briefly mention that these rights are specifically provided under the Consumer Protection Act, 2019."
+  },
+  {
+    "question_number": 5,
+    "question": "Discuss the essentials of a legally enforceable contract with examples.",
+    "answer": "The essentials of a legally enforceable contract are:\n\u2192 offer & Acceptance - e.g. X offers to sell their car for 25 lakhs, Y accepts.\n\u2192 Lawful consideration - e.g. paying money for goods.\n\u2192 Capacity of parties - e.g. A minor cannot enter into a contract.\n\u2192 Free consent - e.g. A contract signed under duress is voidable.\n\u2192 Lawful object - e.g. A contract to smuggle goods is illegal\n\u2192 Certainty & possibility of performance e.g. \u201cI will sell when I feel like\u201d is vague.\n\u2192 Not declared void - e.g. Wagering agreements are void in India\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 3,
+    "text_feedback": "Good answer. The student lists and explains the essentials of a contract and provides relevant examples for each. However, the answer does not explicitly mention 'intention to create legal relations,' which is a key point in the marking scheme.",
+    "improvement_suggestions": "Include 'intention to create legal relations' as an essential element with a brief example to achieve full marks."
+  },
+  {
+    "question_number": 6,
+    "question": "What is the difference between a private and a public company under the\nCompanies Act, 2013?",
+    "answer": "Private\n\u2192Minimum members required are 2.\n\u2192 Max members allowed are 200.\nPublic\n\u2192 Minimum members\nrequired are 7\n\u2192 Unlimited amount of\nmax members allowed.\n---",
+    "max_marks": 4,
+    "score_manual": 3.0,
+    "score": 2,
+    "text_feedback": "Partial answer. The student correctly states the minimum and maximum number of members for private and public companies. However, the answer does not explain what a private or public company is, nor does it highlight differences in ownership and management as required by the marking scheme.",
+    "improvement_suggestions": "Add definitions of private and public companies, and discuss key differences in ownership (e.g., transferability of shares, public subscription) and management (e.g., board structure, disclosure requirements)."
+  },
+  {
+    "question_number": 7,
+    "question": "Differentiate between contract and agreement.",
+    "answer": "Agreement\n\u2192 A promise or set of promises forming consideration for each other.\n\u2192 All agreements are contracts\nContract\n\u2192 A legally enforceable agreement.\n\u2192 All contracts are agreements\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 2,
+    "text_feedback": "Partial answer. The student distinguishes between agreement and contract, but the explanations are brief and contain a factual error ('All agreements are contracts' should be 'All contracts are agreements, but not all agreements are contracts').",
+    "improvement_suggestions": "Provide a more detailed explanation of each term and correct the statement about agreements and contracts. Clearly state that every contract is an agreement, but not every agreement is a contract."
+  },
+  {
+    "question_number": 8,
+    "question": "Amit enters into a contract with Ramesh to sell his car for \u20b95,00,000. They\nagree that Ramesh will make the payment within a week, and Amit will deliver the car.\nHowever, after a week, Ramesh refuses to pay. What legal remedies are available to Amit?",
+    "answer": "This is a breach of contract by Ramesh.\nAmit can do the following:\n\u2192 Suit for damages: Amit can claim compensation for loss suffered due to non-payment.\n\u2192 Suit for specific performance: Amit can approach the court to compel Ramesh to fulfill his\nobligation.\n\u2192 Suit for rescission: Amit may cancel the contract and claim damages.\n\u2192 Suit for quantum merit: If Amit has already delivered the car, he can demand payment for\nthe services performed.\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 3,
+    "text_feedback": "Good answer. The student identifies breach of contract and lists key remedies: damages, specific performance, rescission, and quantum meruit. However, the remedy of injunction is not mentioned, which is part of the marking scheme.",
+    "improvement_suggestions": "Briefly mention the remedy of injunction (e.g., court order preventing a party from doing something) to make the answer fully complete."
+  },
+  {
+    "question_number": 9,
+    "question": "Ravi, a 16-year-old boy, purchases a motorbike from a dealer by falsely\nclaiming to be 18. Later, he meets with an accident and refuses to pay the remaining\namount, stating that he is a minor. Can the dealer sue Ravi for breach of contract?",
+    "answer": "According to Indian Contract Act, 1872, a contract entered into by a\nminor is void ab initio. Therefore:\n\u2192 Contract between Ravi & dealer is not enforceable.\n\u2192 Even though Ravi misrepresented his age, it doesn\u2019t make the contract valid.\n\u2192 The dealer cannot sue Ravi for the outstanding amount.\nHowever, if the bike is still with Ravi, the dealer may claim it under the doctrine of restitution.\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 4,
+    "text_feedback": "Excellent answer. The student accurately explains the legal position of minors in contract law, addresses the effect of misrepresentation of age, and mentions the doctrine of restitution. The answer is thorough and meets all marking scheme requirements.",
+    "improvement_suggestions": "No significant improvements needed. For completeness, you could cite the relevant section of the Indian Contract Act."
+  },
+  {
+    "question_number": 10,
+    "question": "Priya purchases a washing machine from a reputed brand. Within a month,\nit stops functioning. The company refuses to repair it, stating that the warranty does not\ncover the damage. Priya later finds that the machine was defective from the beginning. What\ncan she do under the Consumer Protection Act, 2019?",
+    "answer": "Priya is a customer and has the right to file a complaint against the\ncompany for supplying a defective product. She can:\n\u2192 File a complaint in the District Consumer Forum if the compensation sought is under \u20b91\ncrore.\n\u2192 Claim for replacement or full refund for defective washing machine.\n\u2192 Demand compensation for inconvenience & financial loss.",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 4,
+    "text_feedback": "Excellent answer. The student explains Priya's situation, her rights under the Consumer Protection Act, and the remedies available, including filing a complaint, seeking replacement/refund, and claiming compensation.",
+    "improvement_suggestions": "For further detail, mention that Priya can also seek redressal for unfair trade practices and that the Consumer Forum can order the company to repair or replace the product."
+  }
+]

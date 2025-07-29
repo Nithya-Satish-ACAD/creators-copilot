@@ -1,0 +1,102 @@
+[
+  {
+    "question_number": 1,
+    "question": "Define contract. What are the essential elements of a valid contract?",
+    "answer": "A contract is an agreement made between two or more parties enforced\nby law, according to the Indian Contract Act 1872. A contract is defined as a lawful\nagreement enforced by law. The essential elements of a lawful, valid contract are:\n\u2192 Offer and Acceptance\n\u2192 Lawful Consideration\n\u2192 Lapacity of Parties\n\u2192 Free Consent\n\u2192 Lawful Object\n\u2192 Certainty and Possibility of Performance\n\u2192 Not declared as Void!\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 3,
+    "text_feedback": "The student provides a clear definition of a contract and lists the essential elements of a valid contract. However, the answer does not explicitly mention the 'intention to create legal relations,' which is a key point in the marking scheme. Offer and acceptance, consideration, and other essentials are well covered.",
+    "improvement_suggestions": "Explicitly mention and briefly explain the 'intention to create legal relations' as one of the essential elements of a valid contract to secure full marks."
+  },
+  {
+    "question_number": 2,
+    "question": "Explain the rights of an unpaid seller under the Sale of Goods Act, 1930.",
+    "answer": "An unpaid seller is a seller who has not received full payment on sold\ngoods. Under the Sale of Goods Act 1930, some of the rights possessed are;\n\u2192 Right of lien\n\u2192 Right to Stopping Transit, - The seller can stop goods being sold on transit until payments\nare made\n\u2192 Right to Resell; - Under certain conditions\n\u2192 Right to Sue for Price\n\u2192 Right to Sue for Damage Claims\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 4,
+    "text_feedback": "The answer correctly identifies and briefly explains the rights of an unpaid seller: right of lien, stoppage in transit, right to resell, and right to sue for price. The student also mentions the right to sue for damages, which shows good understanding.",
+    "improvement_suggestions": "For further improvement, provide a brief explanation for each right to demonstrate deeper understanding, but the answer as it stands is complete and accurate."
+  },
+  {
+    "question_number": 3,
+    "question": "What are the different types of contracts? Explain with examples.",
+    "answer": "Contracts are classified based on validity, formulation & performance.\nValidity\n\u2192 Valid Contract: Enforceable by Law Ex: Sale of Goods\n\u2192 Void Contract: Initially valid but now unenforceable due to changes in law. Ex: Contract\nwith alien enemy\n\u2192 Voidable Contract: Contracts where one party itself can cancel the terms. Ex: Contract\nunder coercion/blackmail\n\u2192 Illegal Contract: Unlawful & punishable. Ex: Contract for smuggling\nFormulation\n\u2192 Expressed Contract Ex: Written Rental Agreement\n\u2192 Implicit Contract Ex: Taking a Taxi\nPerformance\n\u2192 Executed Contract Ex: Payment made on goods purchased\n\u2192 Executory Contract Ex: Advanced Payment on Hotel Booking\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 3,
+    "text_feedback": "The student covers types of contracts based on validity, formulation, and performance, and provides relevant examples. However, the answer does not mention 'unilateral and bilateral contracts,' which is specifically required in the marking scheme.",
+    "improvement_suggestions": "Include and briefly explain unilateral and bilateral contracts, with examples, to fully address the marking scheme."
+  },
+  {
+    "question_number": 4,
+    "question": "Explain the concept of consumer protection and the rights of consumers\nunder the Consumer Protection Act, 2019.",
+    "answer": "The concept of consumer protection exists with the aim to protect\ncustomers/buyers from unfair trade practices and defective goods and services. The\nfollowing rights of consumers under the Consumer Protection Act 2019 are:\n\u2192 Right to Safety\n\u2192 Right to Information\n\u2192 Right to be Heard \u2192 Right to seek redressal/grievances\n\u2192 Right to consumer education\n---",
+    "max_marks": 4,
+    "score_manual": 3.0,
+    "score": 3,
+    "text_feedback": "The student explains the concept of consumer protection and lists several rights under the Consumer Protection Act, 2019, such as right to safety, information, being heard, redressal, and education. However, the answer does not explicitly mention the 'right to choose,' which is part of the marking scheme.",
+    "improvement_suggestions": "Add the 'right to choose' and provide a brief explanation of each right for a more comprehensive answer."
+  },
+  {
+    "question_number": 5,
+    "question": "Discuss the essentials of a legally enforceable contract with examples.",
+    "answer": "Essentials of a legally enforced contract, with examples are as followed:\na) Offer and Acceptance; Ex: Offer of 50M dollars for purchased art in exchange for the\nartist's original painting\nb) Lawful Consideration; Ex: Both parties receive something of quantifiable worth in the\nexchanging process (50M, and painting)\nc) Capacity of Parties; Ex: Both buyer and artist (seller) are of legal age and sane mind.\nd) Free Consent; Ex: It was a mutual agreement; both parties agreed on, individually.\ne) Lawful Object; Ex: Object involved (painting & lump sum money) is legal and lawful.\nf) Certainty & Possibility of Performance; Ex: The buyer has 50M guaranteed available for\ntransaction.\ng) Not Declared as Void; Ex: Legally enforceable by both sides and nature of contract.\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 3,
+    "text_feedback": "The answer lists and explains the essentials of a legally enforceable contract with relevant examples. However, it does not explicitly mention 'intention to create legal relations,' which is required by the marking scheme.",
+    "improvement_suggestions": "Include 'intention to create legal relations' as an essential element, with a brief explanation and example, to achieve full marks."
+  },
+  {
+    "question_number": 6,
+    "question": "What is the difference between a private and a public company under the\nCompanies Act, 2013?",
+    "answer": "+------------------------+---------+------------------------+\n| Feature | Private | Public |\n+------------------------+---------+------------------------+\n| Minimum Members | 2 | 7 |\n| Maximum Members | 200 | Unlimited |\n| Shares Transferability | Restricted | Freely Transferrable |\n| Public Issue | Cannot Issue | Can Issue Freely |\n| Statutory Compliance | Less | More |\n+------------------------+---------+------------------------+\n---",
+    "max_marks": 4,
+    "score_manual": 3.0,
+    "score": 4,
+    "text_feedback": "The student provides a clear and structured comparison between private and public companies, covering minimum and maximum members, share transferability, public issue, and statutory compliance. The answer addresses ownership and management differences effectively.",
+    "improvement_suggestions": "For further improvement, add a brief definition of each type of company at the start, but the answer is otherwise complete."
+  },
+  {
+    "question_number": 7,
+    "question": "Differentiate between contract and agreement.",
+    "answer": "Feature Agreement Contract\nDefinition A promise or set of promises made in A lawfully enforced\nconsideration of both parties agreement\nLaw Not always addressed Always lawfully\nEnforcement addressed\nScope Not all agreements are contracts All contracts are\nagreements\nExample Dinner Plans Sale of Goods\n---",
+    "max_marks": 4,
+    "score_manual": 3.0,
+    "score": 4,
+    "text_feedback": "The answer clearly distinguishes between an agreement and a contract, providing definitions, legal enforceability, scope, and examples. The explanation is concise and accurate.",
+    "improvement_suggestions": "No major improvements needed. For further detail, you could elaborate more on the legal enforceability aspect."
+  },
+  {
+    "question_number": 8,
+    "question": "Amit enters into a contract with Ramesh to sell his car for \u20b95,00,000. They\nagree that Ramesh will make the payment within a week, and Amit will deliver the car.\nHowever, after a week, Ramesh refuses to pay. What legal remedies are available to Amit?",
+    "answer": "Legal Remedies Available are:-\n\u2192 Suit for Damages: Amit can suit for the distress suffering faced due to loss of pay and\nclaim damages.\n\u2192 Suit for Rescission: Amit can cancel contract & claim damages, ensuring payment\n\u2192 Suit for Specific Performance: Amit can take Ramesh to court and compel him to pay\nregardless of his situation.\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 3,
+    "text_feedback": "The student lists and briefly explains several legal remedies available to Amit, such as suit for damages, rescission, and specific performance. However, the answer does not mention the remedy of injunction, which is part of the marking scheme.",
+    "improvement_suggestions": "Include 'injunction' as a possible remedy and briefly explain it to fully address the marking scheme."
+  },
+  {
+    "question_number": 9,
+    "question": "Ravi, a 16-year-old boy, purchases a motorbike from a dealer by falsely\nclaiming to be 18. Later, he meets with an accident and refuses to pay the remaining\namount, stating that he is a minor. Can the dealer sue Ravi for breach of contract?",
+    "answer": "Unfortunately, the dealer cannot sue for breach of contract as a contract\ninvolving a minor is void-ab-initio (void from the start). Even though Ravi misrepresented his\nage to the dealer, a suit cannot be raised as:\n\u2192 The contract is void, hence not lawfully enforced\n\u2192 The capacity of parties was not verified, hence the contract was never valid.\n\u2192 There is no certainty of performance ensured by the minor involved.\nThat being said, the cycle can be taken back by the doctrine of restitution.\n---",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 4,
+    "text_feedback": "The answer correctly explains that a contract with a minor is void ab initio and that the dealer cannot sue for breach of contract. The student also mentions misrepresentation and the doctrine of restitution, demonstrating a thorough understanding.",
+    "improvement_suggestions": "For further improvement, briefly define the doctrine of restitution, but the answer is otherwise complete."
+  },
+  {
+    "question_number": 10,
+    "question": "Priya purchases a washing machine from a reputed brand. Within a month,\nit stops functioning. The company refuses to repair it, stating that the warranty does not\ncover the damage. Priya later finds that the machine was defective from the beginning. What\ncan she do under the Consumer Protection Act, 2019?",
+    "answer": "Under the Consumer Protection Act, Priya can:\n\u2192 Claim a full refund or exchange\n\u2192 File a complaint to District Consumer Forum if compensation sought is under 1 crore.\n\u2192 Sue the company and claim damages if they refuse to provide compensation.",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 4,
+    "text_feedback": "The answer identifies the defect, the company's refusal, Priya's rights under the Consumer Protection Act, and the remedies available to her. The response is concise and covers all required points.",
+    "improvement_suggestions": "For further improvement, briefly mention that Priya can seek redressal for deficiency in service under the Act, but the answer is otherwise complete."
+  }
+]

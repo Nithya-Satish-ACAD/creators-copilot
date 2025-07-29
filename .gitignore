@@ -1,2 +1,3 @@
 git_drive_setup.ipynb
 __pycache__/
+tests/evaluate/output/results.gsheet

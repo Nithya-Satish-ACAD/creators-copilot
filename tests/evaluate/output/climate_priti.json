@@ -1,0 +1,152 @@
+[
+  {
+    "question_number": 1,
+    "question": "What are the benefits of electrifying every sector? What are the sectors which\nare harder to electrify in the present times?",
+    "answer": "The benefits of electrifying every sector are reducing the CO2 emissions\nupto an extent. There will be less polluting sectors if they are electrified. There will be\nreduction in the greenhouse gases that can be trapped in the atmosphere. This will also\nreduce the dependencies on the fossil fuel. It will enhance the energy efficiencies compared\nto the combustion based technologies. Furthermore, if it is integrated with renewable 2\nenergy like solar or wind then the air quality will also be improved as these are one of the\nnon-polluting sources of renewable energy. Sectors that are harder to electrify are industries\nlike steel, cement and any chemical production industries as they come under heavy\nindustry categories as their energy requirement is very high.",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "The answer clearly explains the benefits of electrifying every sector, including reduction in CO2 emissions, improved air quality, reduced dependence on fossil fuels, and increased energy efficiency. It also correctly identifies heavy industries like steel, cement, and chemical production as harder to electrify, with a brief explanation.",
+    "improvement_suggestions": "You could further elaborate on why certain sectors are harder to electrify, such as technical or economic barriers. Otherwise, this is a comprehensive and well-structured answer."
+  },
+  {
+    "question_number": 2,
+    "question": "How will climate change impact crop yields and nutritional quality?",
+    "answer": "1) Reduced Yields: - Increased temperatures, droughts, abnormal rainfalls pattern will\ndisturb the crop growth\n2) Increased Pests:- The hot temperatures will lead to the spread of pests and diseases\nleading to the damage of crops\n3) Less Nutritional Qualities:- The high CO2 levels will disturb the levels of contents present\nin the crops like rice and wheat.",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "The answer addresses both parts of the question: it explains how climate change reduces crop yields (via temperature, drought, rainfall, pests) and how it impacts nutritional quality (altered crop content due to high CO2).",
+    "improvement_suggestions": "Consider adding specific examples of nutrients affected or referencing scientific studies for even more depth."
+  },
+  {
+    "question_number": 3,
+    "question": "Describe the carbon offset project and program.",
+    "answer": "Carbon offset projects are basically initiatives that compensate for carbon\nemissions by funding the project that reduce the greenhouse gases. Carbon offset programs\nare when the business are allowed to invest in projects like carbon offsetting, to be able to\nbalance the carbon footprint.",
+    "max_marks": 2,
+    "score_manual": 1.0,
+    "score": 2,
+    "text_feedback": "The student provides a clear description of both carbon offset projects (initiatives to reduce GHGs) and programs (businesses investing in such projects to balance their footprint).",
+    "improvement_suggestions": "You could add examples of specific projects or programs for greater clarity, but your answer meets all requirements."
+  },
+  {
+    "question_number": 4,
+    "question": "What is greenwashing and greenhushing?",
+    "answer": "Greenwashing is when the companies falsely claims to be an environment\nfriendly to be able to get more customers. They may not be true to its values of completely\nbeing sustainable brand, but they still mention it out like that. Greenhushing is when the\ncompany intentionally under-report or hide their sustainability efforts to be able to avoid any\nallegations or escape accusations of the green washing.",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "Both greenwashing and greenhushing are defined accurately, with greenwashing as false environmental claims and greenhushing as under-reporting sustainability efforts.",
+    "improvement_suggestions": "You might add a real-world example of each for extra depth, but your definitions are clear and correct."
+  },
+  {
+    "question_number": 5,
+    "question": "What are the four different types of solar PV solutions based on their\napplication?",
+    "answer": "Solar PV solutions\nOn-grid - Connected to grid allowing the excess energy to be fed back into grid.\n\u2461 Off-grid - Standalone system with battery\n\u2462 Hybrid - Combination of on and off grid\nIntegrated Photovoltaics - for rooftops and buildings-Building",
+    "max_marks": 2,
+    "score_manual": 1.0,
+    "score": 2,
+    "text_feedback": "The answer lists four types of solar PV solutions (on-grid, off-grid, hybrid, integrated/BIPV) and provides a brief description of each.",
+    "improvement_suggestions": "For even better clarity, expand on 'integrated photovoltaics' to specify applications like building-integrated PV (BIPV)."
+  },
+  {
+    "question_number": 6,
+    "question": "Describe doughnut economy and its purpose.",
+    "answer": "Doughnut economy is a model designed by an economist, Dr. Kate which\ntells about the balance between the human needs and the planetary limits. It is a\nsocio-economic model that looks like a doughnut when drawn on paper. The inner circle\nrepresents the human well being and all the human needs like food, water, healthcare and\neducation. The outer circle represents the planetary boundaries like biodiversity loss and\nclimate change. The purpose of the doughnut economy model is to promote for a more\nbalanced and rather sustainable economic growth. It is a framework provided for circular\neconomy and responsible consumption.",
+    "max_marks": 3,
+    "score_manual": 3.0,
+    "score": 2,
+    "text_feedback": "The answer gives a solid description of the doughnut economy and its purpose, including the inner and outer circles and the idea of balancing human needs with planetary boundaries. However, it lacks a specific application or example.",
+    "improvement_suggestions": "To earn full marks, provide a real-world example or discuss how the doughnut economy is applied in practice (e.g., Amsterdam's adoption of the model)."
+  },
+  {
+    "question_number": 7,
+    "question": "What is the greenhouse effect? How does it impact the earth system? Write any\nthree examples of greenhouse gases and its present day concentration.",
+    "answer": "The greenhouse effect is when the process by which certain gases trap the\nheat in the atmosphere and warm up the planet. The more amount of greenhouse gases\nlead to global warming.\nImpact on Earth:-\na) Rise in the global temperature\nb) Extreme weather changes (too hot / heatwaves)\nc) Ocean disruption\nExamples of greenhouse gases: CO2, N2O, methane",
+    "max_marks": 3,
+    "score_manual": 3.0,
+    "score": 2,
+    "text_feedback": "The answer defines the greenhouse effect and describes its impact on the Earth system (temperature rise, extreme weather, ocean disruption). It lists three greenhouse gases but does not provide their present-day concentrations.",
+    "improvement_suggestions": "To earn full marks, include the current atmospheric concentrations for CO2 (~420 ppm), CH4 (~1.9 ppm), and N2O (~0.33 ppm)."
+  },
+  {
+    "question_number": 9,
+    "question": "What are carbon sources, stocks and sinks? Explain with examples",
+    "answer": "Carbon Source :- Emit carbon in the atmosphere (eg: burning of fossil fuels)\nCarbon Stock: Where carbon is stored for sometime; (eg; forests, soil)\n& Carbon Sinks: Absorb and store carbon, reducing the CO2 levels. (eg:- ocean absorbing\nCO2)",
+    "max_marks": 3,
+    "score_manual": 3.0,
+    "score": 2,
+    "text_feedback": "The answer defines carbon sources, stocks, and sinks, and provides examples for each. However, it does not discuss the application or relevance of understanding these concepts.",
+    "improvement_suggestions": "For full marks, briefly explain why understanding these concepts is important (e.g., for climate policy or carbon management)."
+  },
+  {
+    "question_number": 10,
+    "question": "Discuss at least 2 mental models in the context of climate change and\nsolutions. Its strengths and weaknesses for each.",
+    "answer": "There are total of 4 mental models of which 2 are\nGrowth vs degrowth\nMasculine vs. Feminine.",
+    "max_marks": 4,
+    "score_manual": 1.0,
+    "score": 1,
+    "text_feedback": "The answer only lists two mental models (Growth vs Degrowth, Masculine vs Feminine) without describing them or discussing their strengths and weaknesses.",
+    "improvement_suggestions": "Describe each mental model in the context of climate change, and discuss at least one strength and one weakness for each. Also, explain their relevance to climate solutions."
+  },
+  {
+    "question_number": 11,
+    "question": "What is the difference between carbon removal and carbon offset? What are\ntwo categories of carbon dioxide removal?",
+    "answer": "Carbon Removal is when you try to take out the carbon from the\nenvironment, Carbon offset is when you take initiatives to compensate for the carbon\nEmission.\nTwo categories of Carbon Dioxide Removal:\nNatural method - Soil carbon sequestration, biochar.\nTechnological method - Direct air capture.\nCarbon Dioxide removal is the subset of carbon removal that only focuses on CO2.",
+    "max_marks": 4,
+    "score_manual": 4.0,
+    "score": 3,
+    "text_feedback": "The answer explains the difference between carbon removal and carbon offset, identifies two categories of carbon dioxide removal (natural and technological), and gives examples for each. The application/relevance is briefly mentioned.",
+    "improvement_suggestions": "Expand on the explanation of each category and elaborate more on the application or relevance of these concepts for full marks."
+  },
+  {
+    "question_number": 12,
+    "question": "What is climate sensitivity? What are the three common measures of climate\nsensitivity?",
+    "answer": "Climate sensitivity is measure of how much the Earth's temperature will rise\nwith doubling of CO2.\nThree common measures are:\nEquilibrium Climate Sensitivity: When there is a long term temperature increase from ~1.5\u00b0C\n~ ~4.5\u00b0C\nTransient Climate Response: When there is near term temperature increase from \u22480.5\u00b0C -\n~2.5\u00b0C\n\u2462 Effective Climate Sensitivity:",
+    "max_marks": 4,
+    "score_manual": 2.0,
+    "score": 3,
+    "text_feedback": "The answer defines climate sensitivity and identifies three common measures (equilibrium, transient, effective). It gives a brief explanation for the first two but does not explain 'effective climate sensitivity' or discuss the application/relevance.",
+    "improvement_suggestions": "Provide a short explanation of 'effective climate sensitivity' and discuss why understanding climate sensitivity is important for climate projections and policy."
+  },
+  {
+    "question_number": 13,
+    "question": "Derive a simple energy balance model using Stefan\u2019s Boltzmann law and solar\nconstant and calculate the average temperature of the Earth in Kelvin. Given that solar\nconstant S = 1372 Wm-2 , \ud835\udf48 = 5.67\u271510 -8 Wm-2K -4 \u0251 = 0.3. Also write whether this\ntemperature is too hot, cold or ambient.",
+    "answer": "T = 5 (1 - \u03b1)\u2074 1372 (1 - 0.7) = 5.67 X10\u207b\u2078 X 4 = (4.234567901.23)\u00b9\u2044\u2084 =\n255.095 K (= -18.05\u00b0C)\nThis temperature is too low than the actual average temperature.\n\u03b1= Albedo\n\u03c3= Stefan's Boltzmann constant\nS= Solar flux",
+    "max_marks": 5,
+    "score_manual": 5.0,
+    "score": 4,
+    "text_feedback": "The answer includes the derivation of the energy balance model, calculation of Earth's average temperature (255 K), and assessment that this is colder than the actual average. The explanation is clear and the reasoning is sound.",
+    "improvement_suggestions": "For completeness, briefly discuss the relevance of this calculation (e.g., the role of greenhouse effect in raising Earth's temperature above this value)."
+  },
+  {
+    "question_number": 14,
+    "question": "What is clean energy and what are the different types of clean electricity\ntechnologies? Explain any 3 with its pros and challenges.",
+    "answer": "Clean Energy is an energy that does not produce any greenhouse gas\nemissions. Type of clean energy technologies\n\u2460 Solar Positive\n- Renewable\n- less costly\nNegative\n- Require external storage\n- Use land for installation Space\n\u2461 Wind Positive\n- Renewable\n- less emissions\nNegative\n- maybe harmful to birds\n- Intermittent\n- Operational at continuous wind speeds\n\u2462 Hydro power Positive\n- Grid stability\n- Reliable\nNgative\n- environmental impact on the ecosystem",
+    "max_marks": 5,
+    "score_manual": 4.0,
+    "score": 4,
+    "text_feedback": "The answer defines clean energy, lists three clean electricity technologies (solar, wind, hydro), and discusses their pros and challenges. The application/relevance is implied but not explicitly stated.",
+    "improvement_suggestions": "Add a brief statement about the importance of clean energy technologies in mitigating climate change for full marks."
+  },
+  {
+    "question_number": 15,
+    "question": "Mention any three challenges of the carbon offset? What are its alternatives\n(mention at least 2)",
+    "answer": "Carbon offset Challenges:\n1) Verification Issue - It is difficult to ensure the claimed offsets that can actually reduce the\nemissions.\n2) Carbon Leakage - If we offset carbon for some particular area, there is a change of\nemission increasing in the other things. To balance it out at the same time can be difficult to\nmanage.",
+    "max_marks": 5,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "The answer lists two challenges of carbon offset (verification, leakage) and explains them, but does not provide a third challenge or any alternatives.",
+    "improvement_suggestions": "List and explain a third challenge (e.g., permanence, additionality), and mention at least two alternatives to carbon offset (such as direct emission reductions, carbon capture and storage, or carbon taxes), explaining each."
+  },
+  {
+    "question_number": 16,
+    "question": "What are feedback loops in the climate system? Explain positive and negative\nfeedback loops with 1 example each. Explain tipping points using two examples of tipping\nelements.",
+    "answer": "Feedback loops are the processes that amplify the climate change. Positive\nfeedback loop is when it increases the warming. For example the ice - albedo effect. This\nbasically is the melting of ice reduces the reflectivity, absorbing more heat and causes more\nmelting. Negative feedback loop is when it reduces the warming. For example there is\nincreased plant growth that will absorb the CO2 which will eventually reduce the atmospheric\nCO2 present.\nTipping points are referred to as irreversible climate shifts. Examples are Amazon rainforest\nwhere the deforestation and drought are turning the rainforest into savanna. Another\nexample is the Greenland ice sheet melting where there is irreversible ice loss happening\nand it is leading to the sea-level rise.",
+    "max_marks": 5,
+    "score_manual": 3.0,
+    "score": 5,
+    "text_feedback": "The answer defines feedback loops, explains positive and negative feedback with examples, defines tipping points, and provides two examples of tipping elements. The relevance is clear from the explanations.",
+    "improvement_suggestions": "This is a comprehensive answer. For even more depth, you could briefly discuss why understanding feedback loops and tipping points is critical for climate policy and action."
+  }
+]

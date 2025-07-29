@@ -1,0 +1,222 @@
+[
+  {
+    "question_number": 1,
+    "question": "What is the study of living organisms and their interactions with the\nenvironment?",
+    "answer": "Ecology\n---",
+    "max_marks": 1,
+    "score_manual": 1.0,
+    "score": 1,
+    "text_feedback": "Correct. The student correctly identified 'Ecology' as the study of living organisms and their interactions with the environment.",
+    "improvement_suggestions": "No improvement needed. Well done."
+  },
+  {
+    "question_number": 2,
+    "question": "What term refers to all the living organisms in a particular area?",
+    "answer": "Ecosystem\n---",
+    "max_marks": 1,
+    "score_manual": 0.0,
+    "score": 0,
+    "text_feedback": "Incorrect. The student answered 'Ecosystem', but the correct term for all the living organisms in a particular area is 'Community'.",
+    "improvement_suggestions": "Review the definitions of 'community' and 'ecosystem'. Remember, 'community' refers to all living organisms in an area, while 'ecosystem' includes both living and nonliving components."
+  },
+  {
+    "question_number": 3,
+    "question": "What is the term for a group of organisms of the same species in a specific\narea?",
+    "answer": "Population Ecology\n---",
+    "max_marks": 1,
+    "score_manual": 1.0,
+    "score": 0,
+    "text_feedback": "Incorrect. The student wrote 'Population Ecology', but the correct term for a group of organisms of the same species in a specific area is 'Population'.",
+    "improvement_suggestions": "Focus on using the precise term 'Population' for this definition. 'Population Ecology' is the study of populations, not the group itself."
+  },
+  {
+    "question_number": 4,
+    "question": "What is the term for the area where an organism lives and interacts with\nother organisms?",
+    "answer": "genetic diversity\n---",
+    "max_marks": 1,
+    "score_manual": 0.0,
+    "score": 0,
+    "text_feedback": "Incorrect. The student wrote 'genetic diversity', but the correct term is 'Habitat'.",
+    "improvement_suggestions": "Review the definition of 'habitat' as the area where an organism lives and interacts with others."
+  },
+  {
+    "question_number": 5,
+    "question": "What term refers to the physical and biological factors that influence\norganisms in a particular area?",
+    "answer": "Adaptation\n---",
+    "max_marks": 1,
+    "score_manual": 0.0,
+    "score": 0,
+    "text_feedback": "Incorrect. The student wrote 'Adaptation', but the question asks for the term describing the physical and biological factors influencing organisms, which is 'Environmental factors'.",
+    "improvement_suggestions": "Remember, 'adaptation' is a response to environmental factors, not the factors themselves."
+  },
+  {
+    "question_number": 6,
+    "question": "What term describes the diversity of species, ecosystems, and genetic\nvariation in an area?",
+    "answer": "Biosphere\n---",
+    "max_marks": 1,
+    "score_manual": 0.0,
+    "score": 0,
+    "text_feedback": "Incorrect. The student wrote 'Biosphere', but the correct term for the diversity of species, ecosystems, and genetic variation is 'Biodiversity'.",
+    "improvement_suggestions": "Review the definition of 'biodiversity' and how it differs from 'biosphere'."
+  },
+  {
+    "question_number": 7,
+    "question": "What term refers to the organisms at the first trophic level of an ecosystem,\ntypically plants?",
+    "answer": "Producers\n---",
+    "max_marks": 1,
+    "score_manual": 1.0,
+    "score": 1,
+    "text_feedback": "Correct. The student identified 'Producers' as the organisms at the first trophic level.",
+    "improvement_suggestions": "No improvement needed."
+  },
+  {
+    "question_number": 8,
+    "question": "What is the process by which plants make their own food using sunlight?",
+    "answer": "photo synthesis\n---",
+    "max_marks": 1,
+    "score_manual": 1.0,
+    "score": 1,
+    "text_feedback": "Correct. The student wrote 'photo synthesis', which is a minor spelling error but clearly refers to 'Photosynthesis'.",
+    "improvement_suggestions": "Work on correct spelling: 'Photosynthesis'."
+  },
+  {
+    "question_number": 9,
+    "question": "What term refers to the movement of energy through an ecosystem via food\nchains or webs?",
+    "answer": "Energy transfer\n---",
+    "max_marks": 1,
+    "score_manual": 0.0,
+    "score": 0,
+    "text_feedback": "Incorrect. The student wrote 'Energy transfer', but the specific term is 'Energy flow'.",
+    "improvement_suggestions": "Use the precise term 'energy flow' when describing the movement of energy through ecosystems."
+  },
+  {
+    "question_number": 10,
+    "question": "What is the term for the process of restoring damaged ecosystems?",
+    "answer": "Sustainability\n---",
+    "max_marks": 1,
+    "score_manual": 0.0,
+    "score": 0,
+    "text_feedback": "Incorrect. The student wrote 'Sustainability', but the process of restoring damaged ecosystems is called 'Ecosystem restoration'.",
+    "improvement_suggestions": "Review the term 'ecosystem restoration' and its definition."
+  },
+  {
+    "question_number": 11,
+    "question": "What is an ecosystem?",
+    "answer": "An ecosystem is different species and organisms interacting and\ndepending on each other in specific area. Example: Sahara desert.\n---",
+    "max_marks": 2,
+    "score_manual": 0.5,
+    "score": 1,
+    "text_feedback": "Partially correct. The student mentioned living organisms interacting in a specific area, but did not mention nonliving components.",
+    "improvement_suggestions": "Include that an ecosystem also consists of nonliving (abiotic) components like air, water, and soil."
+  },
+  {
+    "question_number": 12,
+    "question": "How does energy flow through ecosystems?",
+    "answer": "The energy flows through the ecosystem with food chains and food\nwebs animals depend on each other for food. Example: zebras feeding on grass\n---",
+    "max_marks": 2,
+    "score_manual": 0.5,
+    "score": 1,
+    "text_feedback": "Partially correct. The student described energy flow through food chains and webs, but did not explicitly mention that energy flows from primary producers to consumers or that the flow is unidirectional.",
+    "improvement_suggestions": "State that energy flows in one direction, from primary producers (plants) to consumers (animals)."
+  },
+  {
+    "question_number": 13,
+    "question": "What are the key differences between an individual and a population in\necology?",
+    "answer": "An individual consists of only one organism whereas a population\nconsist of a group of organisms.\n---",
+    "max_marks": 2,
+    "score_manual": 1.0,
+    "score": 2,
+    "text_feedback": "Correct. The student correctly defined both 'individual' and 'population' in ecology.",
+    "improvement_suggestions": "No improvement needed."
+  },
+  {
+    "question_number": 14,
+    "question": "How do human activities impact biodiversity?",
+    "answer": "Deforestation cutting of trees and habitat destruction can cause animal\ndeath and starvation. Urbanisation is a threat for animal welfare.\n---",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "Correct. The student mentioned negative impacts of human activities on biodiversity and provided examples (deforestation, habitat destruction, urbanisation).",
+    "improvement_suggestions": "No improvement needed."
+  },
+  {
+    "question_number": 15,
+    "question": "What is the role of decomposers in an ecosystem?",
+    "answer": "The decomposers feed on dead and decaying matter and release\nbehind minerals in the soil which that are absorbed by plants on to which the herbivores\nfeed.\n---",
+    "max_marks": 2,
+    "score_manual": 1.5,
+    "score": 2,
+    "text_feedback": "Correct. The student explained that decomposers feed on dead matter and release minerals back into the soil, which are absorbed by plants.",
+    "improvement_suggestions": "No improvement needed."
+  },
+  {
+    "question_number": 16,
+    "question": "What are trophic levels in an ecosystem?",
+    "answer": "Each level in the food chain is known as the trophic level. example\nplants are producers.\n---",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 1,
+    "text_feedback": "Partially correct. The student defined trophic levels as levels in the food chain and gave an example, but did not mention that organisms at the same trophic level share the same function or nutritional relationship.",
+    "improvement_suggestions": "Add that organisms at the same trophic level have the same function in the food chain and similar nutritional relationships."
+  },
+  {
+    "question_number": 17,
+    "question": "Primary Productivity is significant as it disrupts the helth functioning of\ncarnivores and decomposers and",
+    "answer": "primary productivity is significant as it disrupts the herbivore and the\ncarnivore and the carnivore and decomposes malfunctioning of ecosystem.\n---",
+    "max_marks": 2,
+    "score_manual": 0.0,
+    "score": 0,
+    "text_feedback": "Incorrect. The student did not clearly explain the significance of primary productivity or its role in determining energy for other trophic levels.",
+    "improvement_suggestions": "Explain that primary productivity determines the energy available for other trophic levels and is important for ecosystem functioning."
+  },
+  {
+    "question_number": 18,
+    "question": "What is mutualism in ecological interactions?",
+    "answer": "Mutualism is an advantage for both organisms. it is a long term process\nthat requires both organism to be associated example: Bees pollinating flowers.\n---",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "Correct. The student defined mutualism as an advantage for both organisms and gave an example.",
+    "improvement_suggestions": "No improvement needed."
+  },
+  {
+    "question_number": 19,
+    "question": "What is habitat fragmentation?",
+    "answer": "Habitat fragmentation is when it is destroyed due to human\nencroachment and organisms living there are homeless\n---",
+    "max_marks": 2,
+    "score_manual": 0.5,
+    "score": 1,
+    "text_feedback": "Partially correct. The student described habitat fragmentation as destruction due to human encroachment and organisms becoming homeless, but did not mention the division of large habitats into smaller, isolated patches.",
+    "improvement_suggestions": "Include that habitat fragmentation divides large, continuous habitats into smaller, isolated patches."
+  },
+  {
+    "question_number": 20,
+    "question": "Explain the 10% rule in energy transfer.",
+    "answer": "The 10% rule is when only 10% of the energy is transferred to the next\ntrophic level as the 90% Energy is lost as heat, respiration & biological processes.\n---",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "Correct. The student defined the 10% rule and explained that only 10% of energy is transferred to the next trophic level, with the rest lost.",
+    "improvement_suggestions": "No improvement needed."
+  },
+  {
+    "question_number": 21,
+    "question": "What is the role of species diversity in ecosystem functioning?",
+    "answer": "Vast and different number of species are required to maintain ecological\nbalance and equilibrium in ecosystem. example lion feeding on zebra in African Savanna a\nvast number of species can help in mutasism, predation, competition and diverse living.\n---",
+    "max_marks": 5,
+    "score_manual": 1.5,
+    "score": 3,
+    "text_feedback": "Partially correct. The student mentioned the importance of species diversity for ecological balance and gave an example (lion and zebra, mutualism, predation, competition). However, they did not explicitly mention productivity, stability, or ecosystem services.",
+    "improvement_suggestions": "Include how species diversity enhances productivity and stability, and mention ecosystem services maintained by diversity."
+  },
+  {
+    "question_number": 22,
+    "question": "Explain the importance of conservation biology and the strategies used to\nconserve biodiversity.",
+    "answer": "Antipoaching Law enhancement. Supporting local employment and\nEco-tourism. A & detecting cameras for surveillance of the animals. Increasing Security\nlevels of reserves for protecting keeping the animals safe.\n---",
+    "max_marks": 5,
+    "score_manual": 4.0,
+    "score": 2,
+    "text_feedback": "Partially correct. The student listed some strategies (anti-poaching laws, surveillance, eco-tourism, security), but did not explain the overall importance of conservation biology or provide detailed explanations/examples for two strategies or mention protected areas/habitat restoration/legislation.",
+    "improvement_suggestions": "Explain the broader importance of conservation biology, and provide detailed explanations or examples for at least two strategies such as protected areas or habitat restoration."
+  }
+]

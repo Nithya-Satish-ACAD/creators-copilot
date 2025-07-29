@@ -1,0 +1,112 @@
+[
+  {
+    "question_number": 1,
+    "question": "What are the benefits of electrifying every sector? What are the sectors which\nare harder to electrify in the present times?",
+    "answer": "Electrifying every sector ensures that low carbon emissions are maintained\nas almost all sectors use electricity out of which 70% comes from burning of fossil fuel based\nresources like coal & petrols. In present times Industry is harder to electrify as it requires\nhigh amount of energy to power boilers used in manifacturing & heating. Transportation like\nheavy weigh transportation of goods using ships or Airplanes can be also a difficult sector as\nthere are technological limitations for engines or fuels used.",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "You provided a clear explanation of the benefits of electrifying every sector, focusing on emissions reduction. You also correctly identified and explained sectors that are harder to electrify, such as industry and heavy transportation.",
+    "improvement_suggestions": "For even more completeness, you could mention additional benefits (like energy efficiency, air quality) and other hard-to-electrify sectors (e.g., aviation, shipping) or provide more detail on why these are challenging."
+  },
+  {
+    "question_number": 2,
+    "question": "How will climate change impact crop yields and nutritional quality?",
+    "answer": "Climate change events like droughts, high percipitation or heat can impact\ncrop yeild.\n- Water rich crops like rice will be heavily impacted by droughts as there will be water\nscarcity.\n- Minerals retained by soil will be highly impacted by heat waves as they will result in soil\nerosion. This will in turn affect nutritional quality as minerals present in soil would be less &\nalso moisture retained in soil would be less.",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "You explained how climate change affects crop yields (droughts, precipitation, heat) and how it impacts nutritional quality (mineral loss, soil erosion) with relevant examples.",
+    "improvement_suggestions": "To further strengthen your answer, you could mention specific impacts on nutritional content (e.g., reduced protein, vitamins) and reference more crop types."
+  },
+  {
+    "question_number": 3,
+    "question": "Describe the carbon offset project and program.",
+    "answer": "The carbon offset project aims to offset any carbon emissions produced by\na company or organization.\n-These offsets can either be investing in renewable technologies, afforestation or controlling\nemissions by increasing efficiency or using carbon capture technolgies.\n-This can be done by purchasing Carbon credits that can be traded or brought depending on\nthe emissions produced.",
+    "max_marks": 2,
+    "score_manual": 1.0,
+    "score": 2,
+    "text_feedback": "You described what a carbon offset project is and how programs operate, including examples like renewable energy, afforestation, and carbon credits.",
+    "improvement_suggestions": "You could improve by distinguishing more clearly between a 'project' (a specific activity) and a 'program' (a broader scheme or framework for multiple projects)."
+  },
+  {
+    "question_number": 4,
+    "question": "What is greenwashing and greenhushing?",
+    "answer": "Greenwashing is a term used when companies or organizations falsely\nclaim or use unethical means to promote themselves as green or carbon-0. This is done to\navoid critisim for emissions produced.\n- Greenhushing is when companies or organizations undermine their efforts to reduce\ncarbon footprint or not promoting their achurments to avoid scrutinity & judgement.",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "You accurately defined both greenwashing and greenhushing, including their motivations and implications.",
+    "improvement_suggestions": "To improve, you could provide a real-world example of each to illustrate the concepts."
+  },
+  {
+    "question_number": 6,
+    "question": "Describe doughnut economy and its purpose.",
+    "answer": "Doughnout economy is a term that describes socio-economic initiatives\nside by side ecological initiatives. It promotes a circular economy & takes in considerations\nthat initiatives based on soci-economics (food, water, shelter) do not impact ecological\nfactors (forest cover, climate).",
+    "max_marks": 3,
+    "score_manual": 1.0,
+    "score": 2,
+    "text_feedback": "You described the doughnut economy as balancing socio-economic and ecological needs, and explained its purpose: ensuring social foundations without overshooting ecological ceilings.",
+    "improvement_suggestions": "For full marks (3), you should provide an application or example of the doughnut economy in practice."
+  },
+  {
+    "question_number": 7,
+    "question": "What is the greenhouse effect? How does it impact the earth system? Write any\nthree examples of greenhouse gases and its present day concentration.",
+    "answer": "The green house effect basically produces gases that Maintain heat in the\natmosphere. Without these gases heat would not have been trapped & earth would have\nbeen too cold to sustain life.\n- CO2 \u2192 Carbon-dioxide (Emissions by thermal plants)\n- N2O\u2192 Nitrous oxide (fertilizer (chemical) emissions)\n- HFCs \u2192 Hydro furo carbons (emitted by appliances)",
+    "max_marks": 3,
+    "score_manual": 1.0,
+    "score": 2,
+    "text_feedback": "You defined the greenhouse effect and explained its importance for maintaining Earth's temperature. You listed three greenhouse gases (CO2, N2O, HFCs) and their sources.",
+    "improvement_suggestions": "For full marks (3), include the present-day concentrations of each greenhouse gas as requested in the question."
+  },
+  {
+    "question_number": 9,
+    "question": "What are carbon sources, stocks and sinks? Explain with examples",
+    "answer": "Carbon sources are where carbon is emitted like burning of fossil fuels in\nthermal plants or burning of organic matter.\n- Stocks \u2192 Reservoirs where carbon is found in heavy concentrations like atmosphere, soil,\nsea.\n- Sinks \u2192 Where carbon is processed, like forests & captured",
+    "max_marks": 3,
+    "score_manual": 2.0,
+    "score": 2,
+    "text_feedback": "You defined carbon sources, stocks, and sinks, and provided examples for each.",
+    "improvement_suggestions": "To earn full marks (3), include an explanation of the application or relevance of understanding these concepts (e.g., their role in climate policy or management)."
+  },
+  {
+    "question_number": 11,
+    "question": "What is the difference between carbon removal and carbon offset? What are\ntwo categories of carbon dioxide removal?",
+    "answer": "Carbon removal is a process where carbon is \"converted or stored. Carbon\nOffsets are technologies or methods used for carbon removal. Examples include renewable\nenergy plants, afforestation or refforestation.\n\u2192 There are 2 categories of carbon dioxide removal.\n- CCUS [ carbon capture utilization & storage]\n- Excess carbon is captured underground or used in other industrial processes directly from\nplants. Ex: Biochar\n- DAC [ Direct Air Capture] - Carbon di-oxide is directly captured from air using DAC\ntechnologies.",
+    "max_marks": 4,
+    "score_manual": 2.0,
+    "score": 3,
+    "text_feedback": "You explained the difference between carbon removal and carbon offset, identified two categories of carbon dioxide removal (CCUS and DAC), and described each with examples.",
+    "improvement_suggestions": "To achieve full marks (4), discuss the application or relevance of understanding these concepts (e.g., their importance in achieving net zero goals or climate policy)."
+  },
+  {
+    "question_number": 14,
+    "question": "What is clean energy and what are the different types of clean electricity\ntechnologies? Explain any 3 with its pros and challenges.",
+    "answer": "Clean energy has minimal or no emissions. There are many clean energy\ntechnologies\nSolar\n\u2192 Uses energy from sun in the form of sunlight.\n\u2192 Cheapest form of clean energy.\n\u2192 Requires large amount of lands.\nWind -\nUses wind to generate electricity.\n- Pricier than solar but hight output.\n- Very specific to location & also prone to damage.\nNuclear\n- Uses nuclear fission or fusion to generate electricity.\n- The highest output but very expensive.\n- Produces toxic waste products which are hard to manage.\nClean energy technologies have very minimal or no emissions over the life of the plant. They\nalso use renewable energy is free & abundant. Technologies like EVs or Hydrogen cells can\nalso be used considered.",
+    "max_marks": 5,
+    "score_manual": 3.0,
+    "score": 4,
+    "text_feedback": "You defined clean energy, listed several clean electricity technologies, and explained three (solar, wind, nuclear) with their pros and challenges. You also mentioned other technologies like EVs and hydrogen cells.",
+    "improvement_suggestions": "To reach full marks (5), provide a more structured list of all main types of clean electricity technologies and ensure each of the three explained includes both pros and challenges in a balanced way."
+  },
+  {
+    "question_number": 16,
+    "question": "What are feedback loops in the climate system? Explain positive and negative\nfeedback loops with 1 example each. Explain tipping points using two examples of tipping\nelements.",
+    "answer": "Tipping points are thresholds beyond which any change in the climate\nwould result in irreversible changes.\nEx: Greenland / Arctic Glaciers: Melting of these glaciers would result in sea levels rising\nwhich would flood or submerge places of inhabitant near the coasts.\n: Amazonian Rain Forrest: One of the largest sinks in the world. Defforestation would lead to\nuncontrolled carbon di-oxide emissions.",
+    "max_marks": 5,
+    "score_manual": 4.0,
+    "score": 2,
+    "text_feedback": "You explained tipping points and gave two examples (Greenland/Arctic glaciers, Amazon rainforest). However, you did not address feedback loops or provide examples of positive and negative feedback loops.",
+    "improvement_suggestions": "For full marks, define feedback loops, distinguish between positive and negative feedback, and provide one example of each in addition to your tipping point discussion."
+  },
+  {
+    "question_number": 5,
+    "question": "What are the four different types of solar PV solutions based on their\napplication?",
+    "answer": "Solar PV solutions:\n- Can be used to power grids or EV charging stations. Require ON-grid system installations.\n- Off-grid solar installations can be used to power heavy machineraries like electric\nagricultural equipment.\n- For efficient power production, dual axis solar systems can be used which track the\nmovement of the Sun.",
+    "max_marks": 2,
+    "score_manual": 2.0,
+    "score": 1,
+    "text_feedback": "You mentioned some applications of solar PV (on-grid, off-grid, dual axis systems), but you did not clearly identify four distinct types of solar PV solutions as required by the question.",
+    "improvement_suggestions": "List and briefly describe four types of solar PV solutions based on application (e.g., rooftop, ground-mounted, floating, building-integrated)."
+  }
+]
