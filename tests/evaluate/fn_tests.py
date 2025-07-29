@@ -1,6 +1,6 @@
 
 
-###### has function for testing with real answer sheets
+###### has functions for testing with real answer sheets
 
 import os
 import pdfplumber
