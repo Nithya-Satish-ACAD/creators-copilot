@@ -43,6 +43,7 @@ export default function AssetStudioContent() {
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [saveModalMessage, setSaveModalMessage] = useState("");
   const [assetName, setAssetName] = useState("");
+  const [hasCreatedInitialMessage, setHasCreatedInitialMessage] = useState(false);
 
   useEffect(() => {
     if (bottomRef.current) {
@@ -90,15 +91,60 @@ export default function AssetStudioContent() {
 
         // Create asset chat with available files
         const response = await assetService.createAssetChat(courseId, option, fileNames);
-        console.log("Response:", response);
         
-        if (response && response.response) {
-          setChatMessages([{
-            type: "bot",
-            text: response.response
-          }]);
-          setThreadId(response.thread_id);
-          console.log("Thread ID:", response.thread_id);
+        if (!response.body) {
+          throw new Error("Response body is undefined - this might be an error response");
+        }
+        
+        const reader = response.body.getReader(); 
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let accumulatedText = "";
+        let lastUpdateLength = 0;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          
+          buffer += decoder.decode(value, { stream: true });
+          
+          // Parse Server-Sent Events
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || ""; // Keep incomplete line in buffer
+          
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const data = line.slice(6); // Remove 'data: ' prefix
+              if (data.trim()) {
+                accumulatedText += data;
+                
+                // Only update the message if we have accumulated enough new text
+                // This reduces blinking by updating less frequently
+                if (accumulatedText.length - lastUpdateLength > 10 || accumulatedText.length < 50) {
+                  setChatMessages((prev) => {
+                    const newMessages = [...prev];
+                    // Update the last bot message or create a new one
+                    if (newMessages.length > 0 && newMessages[newMessages.length - 1].type === "bot") {
+                      newMessages[newMessages.length - 1].text = accumulatedText;
+                    } else {
+                      newMessages.push({
+                        type: "bot",
+                        text: accumulatedText
+                      });
+                    }
+                    return newMessages;
+                  });
+                  lastUpdateLength = accumulatedText.length;
+                }
+              }
+            }
+          }
+        }
+        // Extract thread_id from response headers or response body if available
+        const threadIdHeader = response.headers.get('X-Thread-ID');
+        if (threadIdHeader) {
+          setThreadId(threadIdHeader);
+          console.log("Thread ID:", threadIdHeader);
         }
       } catch (error) {
         console.error("Error creating initial message:", error);
@@ -109,10 +155,11 @@ export default function AssetStudioContent() {
     };
 
     // Only create initial message if resources are loaded and we haven't created one yet
-    if (resources.length > 0 && chatMessages.length === 0) {
+    if (resources.length > 0 && chatMessages.length === 0 && !hasCreatedInitialMessage) {
+      setHasCreatedInitialMessage(true);
       createInitialMessage();
     }
-  }, [resources, option, chatMessages.length]);
+  }, [resources, option, hasCreatedInitialMessage]);
 
   const toggleSelect = (id) => {
     setSelectedIds((prev) =>
@@ -288,30 +335,7 @@ export default function AssetStudioContent() {
                       lineHeight: "1.6",
                       color: "#222"
                     }}>
-                      <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        components={{
-                          h1: ({node, ...props}) => <h1 style={{ fontSize: "20px", fontWeight: "bold", margin: "8px 0", color: "#222" }}>{props.children}</h1>,
-                          h2: ({node, ...props}) => <h2 style={{ fontSize: "18px", fontWeight: "bold", margin: "8px 0", color: "#222" }}>{props.children}</h2>,
-                          h3: ({node, ...props}) => <h3 style={{fontSize: "16px", fontWeight: "bold", margin: "8px 0", color: "#222"}}> {props.children} </h3>,
-                          p: ({node, ...props}) => <p style={{ margin: "8px 0", color: "#222" }}>{props.children}</p>,
-                          li: ({node, ...props}) => <li style={{ margin: "4px 0", color: "#222" }}>{props.children}</li>,
-                          ul: ({node, ...props}) => <ul style={{margin: "8px 0", paddingLeft: "20px", color: "#222"}} {...props.children} />,
-                          ol: ({node, ...props}) => <ol style={{margin: "8px 0", paddingLeft: "20px", color: "#222"}} {...props.children} />,
-                          // li: ({node, ...props}) => <li style={{margin: "4px 0", color: "#222"}} {...props.children} />,
-                          strong: ({node, ...props}) => <strong style={{fontWeight: "bold", color: "#222"}} {...props.children} />,
-                          em: ({node, ...props}) => <em style={{fontStyle: "italic", color: "#222"}} {...props.children} />,
-                          code: ({node, ...props}) => <code style={{backgroundColor: "#f0f0f0", padding: "2px 4px", borderRadius: "3px", fontFamily: "monospace", fontSize: "14px", color: "#222"}} {...props.children} />,
-                          pre: ({node, ...props}) => <pre style={{backgroundColor: "#f0f0f0", padding: "8px", borderRadius: "4px", overflow: "auto", margin: "8px 0", fontSize: "14px", color: "#222"}} {...props.children} />,
-                          blockquote: ({node, ...props}) => <blockquote style={{borderLeft: "4px solid #ddd", paddingLeft: "12px", margin: "8px 0", color: "#666"}} {...props.children} />,
-                          table: ({node, ...props}) => <table style={{borderCollapse: "collapse", width: "100%", margin: "8px 0", border: "1px solid #ddd", tableLayout: "fixed"}} {...props.children} />,
-                          thead: ({node, ...props}) => <thead style={{backgroundColor: "#f5f5f5"}} {...props.children} />,
-                          tbody: ({node, ...props}) => <tbody {...props.children} />,
-                          tr: ({node, ...props}) => <tr style={{borderBottom: "1px solid #ddd"}} {...props.children} />,
-                          th: ({node, ...props}) => <th style={{padding: "12px 8px", textAlign: "left", border: "1px solid #ddd", fontWeight: "bold", backgroundColor: "#f5f5f5", verticalAlign: "top", wordWrap: "break-word"}} {...props.children} />,
-                          td: ({node, ...props}) => <td style={{padding: "12px 8px", textAlign: "left", border: "1px solid #ddd", verticalAlign: "top", wordWrap: "break-word", lineHeight: "1.4"}} {...props.children} />
-                        }}
-                      >
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {msg.text}
                       </ReactMarkdown>
                     </div>

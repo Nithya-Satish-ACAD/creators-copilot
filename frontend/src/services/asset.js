@@ -31,18 +31,25 @@ export const assetService = {
   // Create initial asset chat with selected files
   createAssetChat: async (courseId, assetTypeName, fileNames) => {
     try {
-      const res = await axios.post(`${API_BASE}/courses/${courseId}/asset_chat/${assetTypeName}`, 
-        { file_names: fileNames }, 
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${getToken()}`
-          }
-        }
-      );
-      return res.data;
+      const token = getToken();
+      const response = await fetch(`${API_BASE}/courses/${courseId}/asset_chat/${assetTypeName}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ file_names: fileNames })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Failed to create asset chat');
+      }
+
+      console.log("Asset service response:", response);
+      return response;
     } catch (error) {
-      handleAxiosError(error);
+      throw new Error(error.message || 'Failed to create asset chat');
     }
   },
 
