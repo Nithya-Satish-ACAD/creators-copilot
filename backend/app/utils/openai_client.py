@@ -1,5 +1,5 @@
 import os
-from openai import OpenAI
+from openai import OpenAI, AsyncOpenAI
 from ..config.settings import settings
 import logging
 
@@ -10,6 +10,10 @@ os.environ["OPENAI_BETA_HEADER"] = "assistants=v2"
 
 # Initialize client with v2 API header using settings
 client = OpenAI(
+    api_key=settings.OPENAI_API_KEY,
+    default_headers={"OpenAI-Beta": "assistants=v2"}
+)
+async_client = AsyncOpenAI(
     api_key=settings.OPENAI_API_KEY,
     default_headers={"OpenAI-Beta": "assistants=v2"}
 )

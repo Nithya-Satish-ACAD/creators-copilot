@@ -1,0 +1,5 @@
+{
+    "id": "about_the_course",
+    "prompt": "Help the instructor generate a concise course description for the course {{ course_name }}. It should be a 50-100 words paragraph including key topics, learning outcomes, skills gained at the end of the course, pedagogical components and assessment methods. {% if enhance_description %} The instructor has already provided some details: {{ details }}. Please use these to generate the course description. {% endif %} Output Format: Respond only with the generated course description. Do not provide any additional messages before or after the description.",
+    "optional_input_variables": ["course_name", "complexity", "topics", "pedagogy"]
+}
