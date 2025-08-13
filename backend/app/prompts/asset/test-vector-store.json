@@ -1,0 +1,5 @@
+{
+    "id": "test-vector-store",
+    "prompt": "Can you summarise the contents of the following documents? {{ file_names }}",
+    "required_input_variables": ["file_names"]
+}

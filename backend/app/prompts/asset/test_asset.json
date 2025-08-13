@@ -1,0 +1,5 @@
+{
+  "prompt": "{{ query }}",
+  "required_input_variables": ["query"],
+  "optional_input_variables": []
+} 

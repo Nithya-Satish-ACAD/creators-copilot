@@ -1,0 +1,27 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+# Environment variables and secrets
+.env
+.env.*
+# VS Code settings
+.vscode/
+# OS files
+.DS_Store
+Thumbs.db
+# Test and coverage outputs
+.pytest_cache/
+.coverage
+.cache
+
+local_storage
+
+test_create_course_and_vector_store
+test_mongo_pdf
+

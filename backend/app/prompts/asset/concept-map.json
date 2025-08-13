@@ -1,0 +1,5 @@
+{
+  "id": "concept-map",
+  "prompt": "Generate a clean, mind-map-style concept diagram for the course '{{course_name}}'. If course documents ({{file_names|length}} files) are provided, identify the 6–12 most central topics and 1–3 short relationship phrases per topic from them; otherwise, infer from the course title. The diagram must have: 1) a large central node with the course title, 2) first-level topics arranged radially around it, 3) curved connectors with small arrowheads and short relationship labels (e.g., 'prerequisite of', 'builds on'), 4) a calm blue/grey color palette, white background, flat/vector style, rounded nodes, thin grey connectors, 5) clear sans-serif labels, and 6) no extra icons, decorations, watermarks, or UI elements. Return only the exact visual description for the image generator.",
+  "required_input_variables": ["course_name", "file_names"]
+} 

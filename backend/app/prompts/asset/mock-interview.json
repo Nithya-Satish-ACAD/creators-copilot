@@ -1,0 +1,5 @@
+{
+    "id": "mock-interview",
+    "prompt": "Generate 8–15 realistic mock interview questions tailored to the specified course or industry, based on either uploaded files ({{file_names}}) or the course title. Ensure a balanced mix of technical and behavioral questions reflecting current hiring trends. Phrase them as interviewers would. For each question, include a brief rationale explaining its relevance to interview preparation.\n\n# Steps\n1. Identify the course subject or industry.\n2. Reference current hiring/interview trends for the field.\n3. Create technical and behavioral questions.\n4. For each question, provide its rationale immediately after the question.\n\n# Output Format\n- Start with: \"Course/Domain: [course/industry name]\"\n- Numbered list of questions:\n  Question text\n  Rationale: [short explanation]\n\n# Notes\n- No long introductions or repeated instructions.\n- Questions and rationales must be directly relevant to the specified topic.",
+    "required_input_variables": ["file_names"]
+  }

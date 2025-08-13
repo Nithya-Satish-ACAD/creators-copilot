@@ -1,0 +1,7 @@
+{
+    "id": "lesson-plans",
+    "prompt": "Generate a concise, practical lesson plan for a class session or segment based on user-provided preferences or details from uploaded files {{file_names}}. Ensure the plan incorporates either a lecture, activity, or other teaching format, and accounts for the fact that students have access to AI by including AI-integrated time or designing activities that are hard to solve using AI.\n\nFirst, request these key details from the user:\n1. Session Type (e.g., lecture, activity)\n2. Topic/Objective\n3. Key Takeaway(s)\n4. Duration\n\nIf any details are missing, use placeholders and note that more input would improve the plan. If ask_clarifying_quesitons is 'yes', ask follow-up questions as needed.\n\nFor activities, include:\n- Materials list\n- Clear step-by-step instructions\n- Assessment rubric in markdown table format\n\nFor lectures/other formats, include:\n- Content outline\n- Student engagement strategies\n- Assessment or closure activity\n\n**Output format (Markdown headings):**\n- Session Type\n- Topic/Objectives\n- Key Takeaway(s)\n- Duration\n- Materials (if relevant)\n- Instructions\n- Assessment (with rubric if activity) or Content Outline, Engagement Strategies, and Assessment/Closure\n\nLimit the plan to 500 words, keeping it practical and classroom-ready.",
+    "required_input_variables": [
+      "file_names"
+    ]
+  }
