@@ -14,6 +14,7 @@ from openai import OpenAI
 import math
 
 USE_OCR_IF_TEXT_EMPTY = True
+OUTPUT_FOLDER = "/content/drive/MyDrive/creators-copilot/tests/evaluate/output"
 
 ### Extract and prepare qa_list, mark scheme
 
@@ -218,7 +219,6 @@ def input_manual_scores(qa_list):
 
     ### Evaluate
 
-
 def evaluate_answers(qa_list, ms_list, api_key, eval_prompt, model):
     """
     Batch‐evaluate student answers against their mark schemes using eval_prompt.
@@ -394,9 +394,9 @@ def save_augmented_report(qa_list, scores_manual, eval_report, filename,
     print(f"Saved augmented report to {out_path}")
 
 
- ### Save results into csv
+### Save results into csv
 
- def append_results(log_path, file_id, metric_manual, metric_auto, scores,
+def append_results(log_path, file_id, metric_manual, metric_auto, scores,
                          fresh=False):
     """
     Append a row of SMAPE results to a CSV log, with separate manual and auto columns.
