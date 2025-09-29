@@ -51,9 +51,6 @@ def _build_page_entry(page, lines, tables):
         "tables": tables
     }
 
-import re
-from collections import defaultdict
-import pdfplumber
 
 
 def _group_words_by_row(page):
