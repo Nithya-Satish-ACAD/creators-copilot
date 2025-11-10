@@ -21,7 +21,21 @@ export default function StudioHeader({
       }}
     >
       {/* Left: Brand */}
-      <div style={{ fontWeight: 700, fontSize: 20 }}>Course Copilot</div>
+      <div 
+        style={{ display: "flex", alignItems: "center", gap: 16, cursor: "pointer" }}
+        onClick={() => navigate('/courses')}
+      >
+        <img 
+          src="/favicon.svg" 
+          alt="Course Copilot Logo" 
+          style={{
+            width: 40,
+            height: 40,
+            marginRight: 14,
+          }}
+        />
+        <span style={{ fontWeight: 700, fontSize: 20, color: "#222", letterSpacing: 0.5 }}>Course Copilot</span>
+      </div>
 
       {/* Right: Buttons */}
       <div style={{ display: "flex", alignItems: "center", gap: 18 }}>

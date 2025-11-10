@@ -32,17 +32,27 @@ class Settings:
     API_PORT: int = int(os.getenv("API_PORT", "8000"))
     
     # CORS Configuration
-    CORS_ORIGINS: List[str] = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:8000,http://localhost:8501").split(",")
+    CORS_ORIGINS: List[str] = [
+        origin.strip() for origin in os.getenv(
+            "CORS_ORIGINS", 
+            "http://localhost:3000,http://localhost:8000,http://localhost:8501,https://course-copilot.atriauniversity.ai,https://course-copilot-api.atriauniversity.ai"
+        ).split(",") if origin.strip()
+    ]
     CORS_ALLOW_CREDENTIALS: bool = os.getenv("CORS_ALLOW_CREDENTIALS", "True").lower() == "true"
     CORS_ALLOW_METHODS: List[str] = os.getenv("CORS_ALLOW_METHODS", "GET,POST,PUT,DELETE,OPTIONS").split(",")
-    CORS_ALLOW_HEADERS: List[str] = os.getenv("CORS_ALLOW_HEADERS", "Authorization,Content-Type,Accept,Origin,User-Agent").split(",")
+    # Allow all headers by default to avoid preflight rejection due to header case mismatches (e.g., 'authorization' vs 'Authorization')
+    # You can override via env CORS_ALLOW_HEADERS if you need to restrict.
+    CORS_ALLOW_HEADERS: List[str] = os.getenv(
+        "CORS_ALLOW_HEADERS",
+        "*"
+    ).split(",")
     CORS_EXPOSE_HEADERS: List[str] = os.getenv("CORS_EXPOSE_HEADERS", "Content-Length,Content-Range").split(",")
     CORS_MAX_AGE: int = int(os.getenv("CORS_MAX_AGE", "3600"))
     
     # Google OAuth Configuration
     GOOGLE_CLIENT_ID: Optional[str] = os.getenv("GOOGLE_CLIENT_ID")
     GOOGLE_CLIENT_SECRET: Optional[str] = os.getenv("GOOGLE_CLIENT_SECRET")
-    GOOGLE_REDIRECT_URI: str = os.getenv("GOOGLE_REDIRECT_URI", "http://localhost:8000/api/callback")
+    GOOGLE_REDIRECT_URI: Optional[str] = os.getenv("GOOGLE_REDIRECT_URI")
     GOOGLE_APPLICATION_CREDENTIALS: str = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
     # Firebase Client SDK
@@ -52,6 +62,15 @@ class Settings:
     FIREBASE_MESSAGING_SENDER_ID: Optional[str] = os.getenv("FIREBASE_MESSAGING_SENDER_ID")
     FIREBASE_APP_ID: Optional[str] = os.getenv("FIREBASE_APP_ID")
     DATABASE_URL: Optional[str] = os.getenv("DATABASE_URL")
+    
+    # SMTP Email Configuration (optional)
+    SMTP_HOST: Optional[str] = os.getenv("SMTP_HOST")
+    SMTP_PORT: Optional[int] = int(os.getenv("SMTP_PORT", "587"))
+    SMTP_USERNAME: Optional[str] = os.getenv("SMTP_USERNAME")
+    SMTP_PASSWORD: Optional[str] = os.getenv("SMTP_PASSWORD")
+    SMTP_FROM_EMAIL: Optional[str] = os.getenv("SMTP_FROM_EMAIL")
+    SMTP_USE_TLS: bool = os.getenv("SMTP_USE_TLS", "true").lower() == "true"
+    SMTP_USE_SSL: bool = os.getenv("SMTP_USE_SSL", "false").lower() == "true"
     
     @classmethod
     def validate(cls) -> None:
@@ -74,6 +93,9 @@ class Settings:
         has_all_env = all(firebase_vars)
         if not (has_key_file or has_all_env):
             raise ValueError("Firebase configuration missing: provide serviceAccountKey.json or set all Firebase env vars")
+
+    # LMS Configuration
+    LMS_BASE_URL: Optional[str] = os.getenv("LMS_BASE_URL")
 
 # Create global settings instance
 settings = Settings()

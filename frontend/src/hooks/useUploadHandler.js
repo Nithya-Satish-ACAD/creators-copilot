@@ -9,7 +9,6 @@ export function useUploadHandler(courseId, sidebarRef, setResourceError) {
   
       try {
         // TODO: uploadCourseResources(courseId, files)
-        console.log("Uploading files:", files);
   
         if (sidebarRef.current?.refreshResources) {
           sidebarRef.current.refreshResources();

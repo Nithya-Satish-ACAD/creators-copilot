@@ -68,13 +68,14 @@ export default function Courses() {
   const renderCourseCard = (course, index) => (
     <div
       key={index}
+      className="course-card"
       style={{
         background: "#fff",
         border: "1.5px solid #f3f4f6",
         borderRadius: 16,
         boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-        minWidth: 220,
-        maxWidth: 260,
+        width: "100%",
+        maxWidth: "280px",
         minHeight: 90,
         padding: "24px 20px",
         cursor: "pointer",
@@ -86,7 +87,8 @@ export default function Courses() {
         fontWeight: 600,
         color: "#222",
         position: 'relative',
-        transition: "transform 0.18s, box-shadow 0.18s, border 0.18s"
+        transition: "transform 0.18s, box-shadow 0.18s, border 0.18s",
+        boxSizing: "border-box"
       }}
       onClick={e => {
         // Only navigate if not clicking the menu
@@ -178,11 +180,24 @@ export default function Courses() {
         onLogout={handleLogout}
       >
         {/* ✅ Course Cards go here */}
-        <div style={{ padding: "24px 5vw", display: "flex", flexWrap: "wrap", gap: "32px" }}>
+        <div
+          className="courses-grid"
+          style={{
+            padding: "24px 5vw",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: "40px",
+            justifyItems: "center",
+            alignItems: "stretch",
+            minHeight: "120px",
+            maxWidth: "100%",
+            overflow: "hidden"
+          }}
+        >
           {savedCourses.length > 0 ? (
             savedCourses.map(renderCourseCard)
           ) : (
-            <div style={{ color: "#888", fontSize: 16 }}>No courses created yet.</div>
+            <div style={{ color: "#888", fontSize: 16, gridColumn: "1 / -1" }}>No courses created yet.</div>
           )}
         </div>
       </CoursesLayout>

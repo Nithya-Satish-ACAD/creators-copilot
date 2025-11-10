@@ -1,16 +1,5 @@
-import axios from 'axios';
-import { getCurrentUser } from './auth';
+import axiosInstance from '../utils/axiosConfig';
 
-const baseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
-const API_BASE = new URL('/api', baseUrl).toString();
-
-function getToken() {
-  const user = getCurrentUser();
-  if (!user || !user.token) {
-    throw new Error('User not authenticated. Please log in.');
-  }
-  return user.token;
-}
 
 
 export async function getAllResources(courseId = null) {
@@ -22,16 +11,18 @@ export async function getAllResources(courseId = null) {
     }
   }
   
-  const res = await axios.get(`${API_BASE}/courses/${courseId}/resources`, {
-    headers: { 'Authorization': `Bearer ${getToken()}` }
-  });
+  const res = await axiosInstance.get(`/courses/${courseId}/resources`);
   return res.data;
 }
 
 // upload resources
 export async function uploadResources(courseId, files) {
-  const res = await axios.post(`${API_BASE}/courses/${courseId}/resources`, {
-    headers: { 'Authorization': `Bearer ${getToken()}` }
+  const formData = new FormData();
+  files.forEach(file => formData.append('files', file));
+  const res = await axiosInstance.post(`/courses/${courseId}/resources`, formData, {
+    headers: {
+      'Content-Type': undefined  // Let browser set multipart/form-data with boundary
+    }
   });
   return res.data;
 }
@@ -39,33 +30,52 @@ export async function uploadResources(courseId, files) {
 
 function handleAxiosError(error) {
   if (error.response && error.response.data && error.response.data.detail) {
-    throw new Error(error.response.data.detail);
+    const detail = error.response.data.detail;
+    // If detail is an array (FastAPI validation errors), format it
+    if (Array.isArray(detail)) {
+      const messages = detail.map(err => `${err.loc.join('.')}: ${err.msg}`).join(', ');
+      throw new Error(messages);
+    }
+    throw new Error(typeof detail === 'string' ? detail : JSON.stringify(detail));
   }
   throw new Error(error.message || 'Unknown error');
 }
 
 export async function uploadCourseResources(courseId, files) {
-  console.log('uploadCourseResources called with:', { courseId, filesCount: files.length });
+  console.log('uploadCourseResources called with:', { courseId, filesCount: files?.length, files });
+  
+  if (!files || files.length === 0) {
+    throw new Error('No files provided for upload');
+  }
+  
   const formData = new FormData();
   files.forEach(file => formData.append('files', file));
+  
   try {
-    const res = await axios.post(`${API_BASE}/courses/${courseId}/resources`, formData, {
+    const res = await axiosInstance.post(`/courses/${courseId}/resources`, formData, {
       headers: {
-        'Authorization': `Bearer ${getToken()}`
+        'Content-Type': undefined  // Let browser set multipart/form-data with boundary
       }
     });
-    console.log('Upload response:', res.data);
     return res.data;
   } catch (error) {
     console.error('Upload error:', error);
+    console.error('Error response:', error.response?.data);
     handleAxiosError(error);
   }
 }
 
 export async function deleteResource(courseId, resourceName) {
-  const res = await axios.delete(`${API_BASE}/courses/${courseId}/resources/${encodeURIComponent(resourceName)}`, {
-    headers: { 'Authorization': `Bearer ${getToken()}` }
-  });
+  const res = await axiosInstance.delete(`/courses/${courseId}/resources/${encodeURIComponent(resourceName)}`);
+  return res.data;
+}
+
+export async function viewResource(courseId, resourceName) {
+  console.log('viewResource called with:', { courseId, resourceName });
+  const url = `/courses/${courseId}/resources/${encodeURIComponent(resourceName)}/content`;
+  console.log('Making request to:', url);
+  const res = await axiosInstance.get(url);
+  console.log('Response received:', res.data);
   return res.data;
 }
 

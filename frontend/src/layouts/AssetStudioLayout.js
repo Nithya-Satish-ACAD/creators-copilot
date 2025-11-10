@@ -53,7 +53,9 @@ export default function AssetStudioLayout({ title = "AI Studio", children, right
           padding: 20,
           boxShadow: "0 1px 6px rgba(0,0,0,0.06)",
           minHeight: "75vh",
-          overflowY: "auto"
+          overflowY: "auto",
+          overflowX: "visible",
+          position: "relative"
         }}>
           {rightPanel}
         </div>

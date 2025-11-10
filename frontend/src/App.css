@@ -52,16 +52,41 @@ body, #root {
   background: #fafbfc;
 }
 
+/* Responsive course grid */
+.courses-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 40px !important;
+  padding: 24px 5vw !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 1200px) {
+  .courses-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    padding: 24px 4vw !important;
+  }
+}
+
 @media (max-width: 900px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+    padding: 20px 3vw !important;
+  }
+  .course-card {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 20px 16px !important;
+    font-size: 16px !important;
+  }
   .modal-custom {
     max-width: 98vw !important;
     min-width: 0 !important;
     padding: 18px 6vw !important;
-  }
-  .course-card {
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 0 18px 0 !important;
   }
   .main-layout {
     flex-direction: column !important;
@@ -70,16 +95,36 @@ body, #root {
   }
 }
 
+@media (max-width: 768px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    padding: 18px 2.5vw !important;
+  }
+  .course-card {
+    padding: 18px 14px !important;
+    font-size: 15px !important;
+  }
+}
+
 @media (max-width: 600px) {
+  .courses-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 16px 2vw !important;
+  }
+  .course-card {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 18px 14px !important;
+    font-size: 15px !important;
+    min-height: 80px !important;
+  }
   .modal-custom {
     max-width: 99vw !important;
     min-width: 0 !important;
     padding: 10px 2vw !important;
-  }
-  .course-card {
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 0 12px 0 !important;
   }
   .main-layout {
     flex-direction: column !important;

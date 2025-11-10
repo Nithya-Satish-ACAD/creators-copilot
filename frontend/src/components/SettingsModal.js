@@ -30,7 +30,6 @@ export default function SettingsModal({ open, onClose, onSave }) {
     setLoading(true);
     try {
       const savedSettings = await getCourseSettings(courseId);
-      console.log("Loaded saved settings:", savedSettings);
       
       // Map backend field names to component state
       if (savedSettings) {
@@ -72,7 +71,6 @@ export default function SettingsModal({ open, onClose, onSave }) {
       pedagogical_components: selectedPedagogical,
       ask_clarifying_questions: askClarifyingQuestions
     };
-    console.log("Saving settings:", payload);
     try {
       await saveCourseSettings(courseId, payload);
       if (onSave) {

@@ -1,0 +1,5 @@
+{
+    "id": "qp-extraction",
+    "prompt": "Extract the questions verbatim from {{file_names}}. Do not paraphrase. Continue a question until the next top-level number (^\\d+[.)-)\\s). Ignore headers/footers like 'Generated on… Page…'. Output only JSON: [{'Question number', 'Question text'}].",
+    "required_input_variables": ["file_names"]
+}

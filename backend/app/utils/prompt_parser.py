@@ -23,6 +23,10 @@ class PromptParser:
         # Given a file path and a dict of input variables, substitutes the variables in the prompt and returns the rendered prompt.
         data = self._load_template_json(template_file_path)
         prompt_template = data.get('prompt')
+        if prompt_template and os.path.isfile(prompt_template):
+            # if it's actually a file path, load its content
+            with open(prompt_template, 'r', encoding='utf-8') as f:
+                prompt_template = f.read()
         required_vars = data.get('required_input_variables', [])
         optional_vars = data.get('optional_input_variables', [])
 
@@ -50,3 +54,9 @@ class PromptParser:
             self._get_prompt_path(f"prompts/asset/{asset_name}.json"), input_variables
         )
         return full_asset_prompt
+
+    def get_evaluation_prompt(self, evaluation_id: str, input_variables: dict):
+        full_evaluation_prompt = self.render_prompt(
+            self._get_prompt_path("prompts/evaluation/evaluation.json"), input_variables
+        )
+        return full_evaluation_prompt

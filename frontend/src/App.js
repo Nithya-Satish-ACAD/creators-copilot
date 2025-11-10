@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import NotFound from "./pages/NotFound";
 import ForgotPassword from "./pages/ForgotPassword";
 import AssetStudio from './pages/AssetStudio';
+import Evaluation from './pages/Evaluation';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/courses" element={<Courses />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/studio/:feature" element={<AssetStudio />} />
+            <Route path="/evaluation" element={<Evaluation />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="*" element={<NotFound />} />

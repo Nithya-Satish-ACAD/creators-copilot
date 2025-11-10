@@ -1,14 +1,17 @@
 import logging
+import asyncio
+from typing import Optional
 from openai import AssistantEventHandler
 from typing_extensions import override
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
 from pydantic import BaseModel
 from datetime import datetime
 from ..utils.verify_token import verify_token
 from ..utils.prompt_parser import PromptParser
 from ..utils.openai_client import client
-from ..services.mongo import get_course, create_asset, get_assets_by_course_id, get_asset_by_course_id_and_asset_name
+from ..services.mongo import get_course, create_asset, get_assets_by_course_id, get_asset_by_course_id_and_asset_name, delete_asset_from_db, create_resource
 from ..services.openai_service import clean_text
+from ..services.task_manager import task_manager, TaskStatus
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -30,6 +33,18 @@ class AssetRequest(BaseModel):
 class AssetResponse(BaseModel):
     response: str
     thread_id: str
+
+class TaskResponse(BaseModel):
+    task_id: str
+    status: str
+    message: str
+
+class TaskStatusResponse(BaseModel):
+    task_id: str
+    status: str
+    result: Optional[dict] = None
+    error: Optional[str] = None
+    metadata: Optional[dict] = None
 
 class AssetCreateResponse(BaseModel):
     message: str
@@ -76,17 +91,53 @@ def construct_input_variables(course: dict, file_names: list[str]) -> dict:
     }
     return input_variables
 
-@router.post("/courses/{course_id}/asset_chat/{asset_type_name}", response_model=AssetResponse)
-async def create_asset_chat(course_id: str, asset_type_name: str, request: AssetRequest, user_id: str = Depends(verify_token)):
+def _process_asset_chat_background(task_id: str, course_id: str, asset_type_name: str, file_names: list, user_id: str):
+    """Background task to process asset chat generation"""
     try:
+        task_manager.mark_processing(task_id)
+        logger.info(f"Starting background task {task_id} for asset '{asset_type_name}'")
+        
         course = get_course(course_id)
         if not course or "assistant_id" not in course:
-            raise HTTPException(status_code=404, detail="Course or assistant not found")
+            task_manager.mark_failed(task_id, "Course or assistant not found")
+            return
 
         assistant_id = course["assistant_id"]
 
+        # Check if mark-scheme and extract questions first
+        extracted_questions = ""
+        if asset_type_name == "mark-scheme":
+            # First extract questions using qp-extraction
+            input_variables_qp = construct_input_variables(course, file_names)
+            parser_qp = PromptParser()
+            prompt_qp = parser_qp.get_asset_prompt("qp-extraction", input_variables_qp)
+            
+            thread_qp = client.beta.threads.create()
+            client.beta.threads.messages.create(
+                thread_id=thread_qp.id,
+                role="user",
+                content=prompt_qp
+            )
+            
+            handler_qp = AssetChatStreamHandler()
+            with client.beta.threads.runs.stream(
+                thread_id=thread_qp.id,
+                assistant_id=assistant_id,
+                event_handler=handler_qp
+            ) as stream:
+                stream.until_done()
+            
+            messages_qp = client.beta.threads.messages.list(thread_id=thread_qp.id)
+            extracted_questions = messages_qp.data[0].content[0].text.value
+            logger.info(f"Extracted questions: {extracted_questions}")
+
         # Prepare prompt
-        input_variables = construct_input_variables(course, request.file_names)
+        input_variables = construct_input_variables(course, file_names)
+        
+        # Add extracted_questions to input_variables if mark-scheme
+        if asset_type_name == "mark-scheme":
+            input_variables["extracted_questions"] = extracted_questions
+        
         parser = PromptParser()
         prompt = parser.get_asset_prompt(asset_type_name, input_variables)
         logger.info(f"Prompt for asset '{asset_type_name}': {prompt}")
@@ -116,25 +167,88 @@ async def create_asset_chat(course_id: str, asset_type_name: str, request: Asset
         latest_message = messages.data[0]
         complete_response = latest_message.content[0].text.value
 
-        return AssetResponse(response=complete_response, thread_id=thread_id)
+        # Mark task as completed with result
+        result = {
+            "response": complete_response,
+            "thread_id": thread_id
+        }
+        task_manager.mark_completed(task_id, result)
+        logger.info(f"Completed background task {task_id} for asset '{asset_type_name}'")
 
     except Exception as e:
-        logger.error(f"Exception in create_asset for asset '{asset_type_name}': {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"Exception in background task {task_id} for asset '{asset_type_name}': {e}")
+        task_manager.mark_failed(task_id, str(e))
 
-@router.put("/courses/{course_id}/asset_chat/{asset_name}", response_model=AssetResponse)
-def continue_asset_chat(course_id: str, asset_name: str, thread_id: str, request: AssetPromptRequest, user_id: str = Depends(verify_token)):
+@router.post("/courses/{course_id}/asset_chat/{asset_type_name}", response_model=TaskResponse)
+async def create_asset_chat(
+    course_id: str, 
+    asset_type_name: str, 
+    request: AssetRequest, 
+    background_tasks: BackgroundTasks,
+    user_id: str = Depends(verify_token)
+):
+    """
+    Create asset chat generation task (runs in background)
+    Returns task_id immediately - use /tasks/{task_id} to check status
+    """
     try:
+        # Backwards compatibility: Convert old "lesson-plans" to "lecture"
+        if asset_type_name == "lesson-plans":
+            asset_type_name = "lecture"
+        
+        # Validate course exists
         course = get_course(course_id)
         if not course or "assistant_id" not in course:
             raise HTTPException(status_code=404, detail="Course or assistant not found")
+
+        # Create task
+        task_id = task_manager.create_task(
+            task_type="asset_chat_create",
+            metadata={
+                "course_id": course_id,
+                "asset_type_name": asset_type_name,
+                "user_id": user_id,
+                "file_count": len(request.file_names)
+            }
+        )
+
+        # Schedule background task
+        background_tasks.add_task(
+            _process_asset_chat_background,
+            task_id,
+            course_id,
+            asset_type_name,
+            request.file_names,
+            user_id
+        )
+
+        return TaskResponse(
+            task_id=task_id,
+            status="pending",
+            message=f"Asset generation task created for '{asset_type_name}'"
+        )
+
+    except Exception as e:
+        logger.error(f"Exception in create_asset_chat for asset '{asset_type_name}': {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+def _process_continue_asset_chat_background(task_id: str, course_id: str, asset_name: str, thread_id: str, user_prompt: str, user_id: str):
+    """Background task to process asset chat continuation"""
+    try:
+        task_manager.mark_processing(task_id)
+        logger.info(f"Starting background task {task_id} for continue asset '{asset_name}'")
+        
+        course = get_course(course_id)
+        if not course or "assistant_id" not in course:
+            task_manager.mark_failed(task_id, "Course or assistant not found")
+            return
         assistant_id = course["assistant_id"]
 
         # Send user prompt to the thread
-        message_response = client.beta.threads.messages.create(
+        client.beta.threads.messages.create(
             thread_id=thread_id,
             role="user",
-            content=request.user_prompt
+            content=user_prompt
         )
 
         # Create and stream the run
@@ -151,10 +265,67 @@ def continue_asset_chat(course_id: str, asset_name: str, thread_id: str, request
         latest_message = messages.data[0]
         complete_response = latest_message.content[0].text.value
         
-        return AssetResponse(response=complete_response, thread_id=thread_id)
+        # Mark task as completed with result
+        result = {
+            "response": complete_response,
+            "thread_id": thread_id
+        }
+        task_manager.mark_completed(task_id, result)
+        logger.info(f"Completed background task {task_id} for continue asset '{asset_name}'")
 
     except Exception as e:
-        logger.error(f"Exception in continue_asset for asset '{asset_name}': {e}")
+        logger.error(f"Exception in background task {task_id} for continue asset '{asset_name}': {e}")
+        task_manager.mark_failed(task_id, str(e))
+
+@router.put("/courses/{course_id}/asset_chat/{asset_name}", response_model=TaskResponse)
+async def continue_asset_chat(
+    course_id: str, 
+    asset_name: str, 
+    thread_id: str, 
+    request: AssetPromptRequest, 
+    background_tasks: BackgroundTasks,
+    user_id: str = Depends(verify_token)
+):
+    """
+    Continue asset chat conversation (runs in background)
+    Returns task_id immediately - use /tasks/{task_id} to check status
+    """
+    try:
+        # Validate course exists
+        course = get_course(course_id)
+        if not course or "assistant_id" not in course:
+            raise HTTPException(status_code=404, detail="Course or assistant not found")
+
+        # Create task
+        task_id = task_manager.create_task(
+            task_type="asset_chat_continue",
+            metadata={
+                "course_id": course_id,
+                "asset_name": asset_name,
+                "thread_id": thread_id,
+                "user_id": user_id
+            }
+        )
+
+        # Schedule background task
+        background_tasks.add_task(
+            _process_continue_asset_chat_background,
+            task_id,
+            course_id,
+            asset_name,
+            thread_id,
+            request.user_prompt,
+            user_id
+        )
+
+        return TaskResponse(
+            task_id=task_id,
+            status="pending",
+            message=f"Asset chat continuation task created for '{asset_name}'"
+        )
+
+    except Exception as e:
+        logger.error(f"Exception in continue_asset_chat for asset '{asset_name}': {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/courses/{course_id}/assets", response_model=AssetCreateResponse)
@@ -163,14 +334,15 @@ def save_asset(course_id: str, asset_name: str, asset_type: str, request: AssetC
     category_map = {
         "brainstorm": "curriculum",
         "course-outcomes": "curriculum",
-        "modules-topics": "curriculum",
-        "lesson-plans": "curriculum",
+        "modules": "curriculum",
+        "lecture": "curriculum",
         "concept-map": "curriculum",
         "course-notes": "curriculum",
         "project": "assessments",
         "activity": "assessments",
         "quiz": "assessments",
         "question-paper": "assessments",
+        "mark-scheme": "assessments",
         "mock-interview": "assessments",
     }
     # Default to a safe category so saving never fails due to unmapped type
@@ -224,5 +396,83 @@ def create_image(course_id: str, asset_type_name: str, user_id: str = Depends(ve
     image_url = image.data[0].url
 
     return ImageResponse(image_url=image_url)
+
+#delete asset
+@router.delete("/courses/{course_id}/assets/{asset_name}", response_model=AssetCreateResponse)
+def delete_asset(course_id: str, asset_name: str, user_id: str = Depends(verify_token)):
+    try:
+        # Check if asset exists
+        asset = get_asset_by_course_id_and_asset_name(course_id, asset_name)
+        if not asset:
+            raise HTTPException(status_code=404, detail="Asset not found")
+        
+        # Delete asset using the dedicated function
+        delete_asset_from_db(course_id, asset_name)
+        
+        return AssetCreateResponse(message=f"Asset '{asset_name}' deleted successfully")
+    except Exception as e:
+        logger.error(f"Error deleting asset '{asset_name}': {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/courses/{course_id}/assets/{asset_name}/save-as-resource", response_model=AssetCreateResponse)
+def save_asset_as_resource(course_id: str, asset_name: str, request: AssetCreateRequest, user_id: str = Depends(verify_token)):
+    """Save an existing asset as a resource so it can be viewed in the resource view modal"""
+    try:
+        
+        # 2. Get the content from the frontend request
+        content = request.content
+        logger.info(f"Received content for asset '{asset_name}': {content[:100] if content else 'None'}...")
+        if not content:
+            raise HTTPException(status_code=404, detail="Content not provided")
+
+        
+        # 5. Save the content as a resource
+        logger.info(f"Saving resource: {asset_name} with content length: {len(content)}")
+        create_resource(course_id, asset_name, content)
+        logger.info(f"Resource saved successfully: {asset_name}")
+        
+        return AssetCreateResponse(message=f"Asset '{asset_name}' saved as resource '{asset_name}' successfully")
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error saving asset '{asset_name}' as resource: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Task Status Endpoints
+@router.get("/tasks/{task_id}", response_model=TaskStatusResponse)
+async def get_task_status(task_id: str, user_id: str = Depends(verify_token)):
+    """
+    Get the status of a background task
+    Use this to poll for task completion after starting an async asset generation
+    """
+    task = task_manager.get_task(task_id)
+    
+    if not task:
+        raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
+    
+    return TaskStatusResponse(
+        task_id=task.task_id,
+        status=task.status.value,
+        result=task.result,
+        error=task.error,
+        metadata=task.metadata
+    )
+
+@router.delete("/tasks/{task_id}")
+async def cancel_task(task_id: str, user_id: str = Depends(verify_token)):
+    """
+    Cancel a pending or running task
+    Note: Tasks already in progress will complete but results won't be stored
+    """
+    task = task_manager.get_task(task_id)
+    
+    if not task:
+        raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
+    
+    if task.status in [TaskStatus.COMPLETED, TaskStatus.FAILED, TaskStatus.CANCELLED]:
+        return {"message": f"Task {task_id} already finished with status: {task.status.value}"}
+    
+    task_manager.mark_cancelled(task_id)
+    return {"message": f"Task {task_id} cancelled"}
 
 

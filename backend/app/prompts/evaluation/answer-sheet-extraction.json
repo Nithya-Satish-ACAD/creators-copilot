@@ -1,0 +1,5 @@
+{
+    "id": "answer-sheet-extraction",
+    "prompt": "Extract ALL questions and answers from the attached answer sheet file.\n\nCRITICAL REQUIREMENTS (MUST FOLLOW EXACTLY – NO EXCEPTIONS):\n\n1. Extract EVERY single question from the attached file. Do not skip, merge, or omit ANY question under any circumstance.\n2. Include the full and complete question text exactly as it appears in the source (no truncation, paraphrasing, or alteration).\n3. If an answer is missing, blank, or written as 'N/A', you must set \"student_answer\": null. Do not leave it as an empty string or remove the field.\n4. Return the output strictly in the exact format provided. No extra fields, no missing fields, no reordering, no commentary, no explanations — only the structured data exactly as specified.\n\nReturn JSON format: {\"student_name\": \"...\", \"answers\": [{\"question_number\": \"1\", \"question_text\": \"...\", \"student_answer\": \"...\"}]} MAKE SURE YOU JUST EXTRACT THE QUESTIONS AND ANSWERS, DO NOT ADD/CHANGE/REMOVE ANYTHING ELSE",
+    "required_input_variables": ["file_id"]
+}

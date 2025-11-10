@@ -5,6 +5,7 @@ import KnowledgeBase from "../components/KnowledgBase";
 import { FaDownload, FaFolderPlus, FaSave } from "react-icons/fa";
 import { getAllResources, uploadCourseResources, deleteResource as deleteResourceApi } from "../services/resources";
 import { assetService } from "../services/asset";
+import { resolveNameConflict, getAllResourceNames } from "../utils/nameConflictHandler";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
@@ -12,8 +13,8 @@ import AddResourceModal from '../components/AddReferencesModal';
 
 const optionTitles = {
   "course-outcomes": "Course Outcomes",
-  "modules-and-topics": "Modules & Topics",
-  "lesson-plans": "Lesson Plans",
+  "modules-and-topics": "Modules",
+  "lecture": "Lecture",
   "concept-map": "Concept Map",
   "course-notes": "Course Notes",
   "brainstorm": "Brainstorm",
@@ -33,8 +34,12 @@ export default function AssetStudioContent() {
 
   // ✅ Pre-select only those passed from Dashboard
   const selectedFiles = location.state?.selectedFiles || [];
-  const initialSelectedIds = selectedFiles.map(file => file.id);
+  const initialSelectedIds = selectedFiles.map(file => file.id || file.fileName || file.name);
   const [selectedIds, setSelectedIds] = useState(initialSelectedIds);
+  
+  // Debug logging for file selection
+  console.log('Selected files from Dashboard:', selectedFiles);
+  console.log('Initial selected IDs:', initialSelectedIds);
 
   const [chatMessages, setChatMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
@@ -53,6 +58,7 @@ export default function AssetStudioContent() {
   const [resourceSaveMessage, setResourceSaveMessage] = useState("");
   const hasInitializedRef = useRef(false);
   const isSendingRef = useRef(false);
+  const textareaRef = useRef(null);
 
   useEffect(() => {
     if (bottomRef.current) {
@@ -88,7 +94,6 @@ export default function AssetStudioContent() {
   useEffect(() => {
     const createInitialMessage = async () => {
       try {
-        setIsLoading(true);
         const courseId = localStorage.getItem('currentCourseId');
         if (!courseId) {
           console.error('No course ID found');
@@ -107,8 +112,24 @@ export default function AssetStudioContent() {
           }
         }
 
-        // Create asset chat with all available files (or empty array if no files) for follow-up text
-        const fileNames = resources.map(file => file.resourceName || file.fileName || file.id);
+        // If no files were selected, do not create an initial message
+        if (!selectedIds || selectedIds.length === 0) {
+          return;
+        }
+
+        setIsLoading(true);
+
+        // Create asset chat using ONLY selected resources (no fallback)
+        const resolveId = (r) => r.id || r.resourceName || r.fileName;
+        const chosen = resources.filter(r => selectedIds.includes(resolveId(r)));
+        const fileNames = chosen.map(file => file.resourceName || file.fileName || resolveId(file));
+        
+        // Debug logging
+        console.log('Selected IDs:', selectedIds);
+        console.log('Available resources:', resources.map(r => ({ id: resolveId(r), name: r.resourceName || r.fileName })));
+        console.log('Chosen files:', chosen);
+        console.log('File names being sent:', fileNames);
+        
         const response = await assetService.createAssetChat(courseId, option, fileNames);
         if (response && response.response) {
           setChatMessages(prev => [...prev, { type: "bot", text: response.response }]);
@@ -123,11 +144,13 @@ export default function AssetStudioContent() {
     };
 
     // Guard against double-invocation and ensure resources have been fetched first
-    if (!hasInitializedRef.current && !resourcesLoading && chatMessages.length === 0) {
+    // Only run once when resources finish loading, ignore subsequent resource updates
+    if (!hasInitializedRef.current && !resourcesLoading && chatMessages.length === 0 && resources.length > 0) {
       hasInitializedRef.current = true;
       createInitialMessage();
     }
-  }, [resourcesLoading, resources, option, chatMessages.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resourcesLoading, option]);
 
   const toggleSelect = (id) => {
     setSelectedIds((prev) =>
@@ -142,6 +165,10 @@ export default function AssetStudioContent() {
     const newMsg = { type: "user", text: inputMessage };
     setChatMessages((prev) => [...prev, newMsg]);
     setInputMessage("");
+    // Reset textarea height
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+    }
     setIsLoading(true);
 
     try {
@@ -154,17 +181,9 @@ export default function AssetStudioContent() {
         throw new Error("No course ID found");
       }
 
-      console.log("Sending chat message:", {
-        courseId,
-        assetName: option,
-        threadId,
-        userPrompt: inputMessage
-      });
-
       // Continue the conversation with the backend
       const response = await assetService.continueAssetChat(courseId, option, threadId, inputMessage);
       
-      console.log("Backend response:", response);
       
       if (response && response.response) {
         const botResponse = {
@@ -217,10 +236,22 @@ export default function AssetStudioContent() {
         return;
       }
 
+      // Get existing assets to check for conflicts
+      const existingAssetsData = await assetService.getAssets(courseId);
+      const existingAssets = existingAssetsData.assets || [];
+      const existingAssetNames = existingAssets.map(asset => asset.asset_name);
+
+      // Resolve name conflict
+      const finalAssetName = resolveNameConflict(assetName.trim(), existingAssetNames);
+      
+      // Update the asset name in the input if it was changed
+      if (finalAssetName !== assetName.trim()) {
+        setAssetName(finalAssetName);
+      }
+
       const assetType = option;
 
-      await assetService.saveAsset(courseId, assetName, assetType, saveModalMessage);
-      console.log(`✅ Asset "${assetName}" saved successfully!`);
+      await assetService.saveAsset(courseId, finalAssetName, assetType, saveModalMessage);
       
       // Close modal and reset
       setShowSaveModal(false);
@@ -253,22 +284,36 @@ export default function AssetStudioContent() {
     try {
       const courseId = localStorage.getItem('currentCourseId');
       if (!courseId) return;
-      const baseName = (resourceFileName || '').trim() || 'document';
-      const safeBase = baseName.replace(/[^a-zA-Z0-9-_ ]/g, '_');
-      const finalFileName = safeBase.toLowerCase().endsWith('.pdf') ? safeBase : `${safeBase}.pdf`;
-      const blob = await assetService.generateContentPdfBlob(safeBase, resourceSaveMessage || '', {
-        asset_type: option
-      });
-      const file = new File([blob], finalFileName, { type: 'application/pdf' });
-      await uploadCourseResources(courseId, [file]);
+      
+      // Get existing resource names to check for conflicts
+      const existingResourceNames = getAllResourceNames(resources);
+      
+      // Resolve name conflict
+      const baseResourceName = (resourceFileName || '').trim() || 'document';
+      const finalResourceName = resolveNameConflict(baseResourceName, existingResourceNames);
+      
+      // Update the resource name in the input if it was changed
+      if (finalResourceName !== baseResourceName) {
+        setResourceFileName(finalResourceName);
+      }
+      
+      console.log('Saving chat message as resource:', finalResourceName);
+      console.log('Content length:', resourceSaveMessage?.length || 0);
+      
+      // Use the same endpoint as AssetSubCard - save content as text resource
+      const result = await assetService.saveAssetAsResource(courseId, finalResourceName, resourceSaveMessage || '');
+      console.log('Save as resource result:', result);
+      
+      // Refresh resources list
       const resourcesData = await getAllResources(courseId);
       setResources(resourcesData.resources);
+      
       setShowSaveResourceModal(false);
       setResourceFileName("");
       setResourceSaveMessage("");
     } catch (e) {
       console.error('Failed to save to resources', e);
-      alert('Failed to save to resources');
+      alert(`Failed to save to resources: ${e.message}`);
     } finally {
       setIsSavingResource(false);
     }
@@ -282,7 +327,6 @@ export default function AssetStudioContent() {
 
   const handleFileUpload = () => {
     // For mock data, we'll just log the upload
-    console.log("File upload triggered - in real implementation this would refresh from API");
   };
 
   // Add this handler to refresh resources after adding
@@ -323,6 +367,7 @@ export default function AssetStudioContent() {
           onFileChange={handleFileUpload}
           onAddResource={() => setShowAddResourceModal(true)}
           onDelete={handleDeleteResource}
+          courseId={localStorage.getItem('currentCourseId')}
         />
       }
     >
@@ -487,14 +532,15 @@ export default function AssetStudioContent() {
         </div>
       </div>
 
-      <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
-        <input
+      <div style={{ display: "flex", gap: 12, marginTop: 16, alignItems: "flex-end" }}>
+        <textarea
+          ref={textareaRef}
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
-              if (!isLoading) {
+              if (!isLoading && inputMessage.trim()) {
                 handleSend();
               }
             }
@@ -505,7 +551,22 @@ export default function AssetStudioContent() {
             padding: "10px 12px",
             borderRadius: 8,
             border: "1px solid #ccc",
-            fontSize: 15
+            fontSize: 15,
+            minHeight: "20px",
+            maxHeight: "120px",
+            resize: "none",
+            overflow: "auto",
+            fontFamily: "inherit",
+            lineHeight: "1.4",
+            whiteSpace: "pre-wrap",
+            wordWrap: "break-word"
+          }}
+          rows={1}
+          onInput={(e) => {
+            // Auto-resize textarea based on content
+            e.target.style.height = 'auto';
+            const newHeight = Math.min(e.target.scrollHeight, 120);
+            e.target.style.height = newHeight + 'px';
           }}
         />
         <button
@@ -640,7 +701,7 @@ export default function AssetStudioContent() {
 
             <div style={{ marginBottom: 16 }}>
               <label style={{ display: "block", marginBottom: 8, fontWeight: 500 }}>
-                File Name:
+                Resource Name:
               </label>
               <input
                 type="text"
@@ -654,7 +715,7 @@ export default function AssetStudioContent() {
                   fontSize: 14,
                   boxSizing: "border-box"
                 }}
-                placeholder="Enter file name (e.g., Outcome Draft)"
+                placeholder="Enter resource name (e.g., Course Notes)"
               />
             </div>
 

@@ -1,0 +1,6 @@
+{
+    "id": "mark-scheme-extraction",
+    "prompt": "Extract questions, answers, and marking scheme. Return JSON format: {\"mark_scheme\": [{\"question_number\": \"1\", \"question_text\": \"...\", \"answer_template\": \"...\", \"mark_scheme\": \"...\", \"deductions\": \"...\", \"notes\": \"...\"}]}MAKE SURE YOU JUST EXTRACT THE QUESTIONS AND ANSWERS, DO NOT ADD/CHANGE/REMOVE ANYTHING ELSE",
+    "required_input_variables": []
+  }
+  

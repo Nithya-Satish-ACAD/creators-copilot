@@ -211,9 +211,27 @@ export default function AssetViewModal({ open, onClose, assetData, courseId }) {
             remarkPlugins={[remarkGfm, remarkBreaks]}
             components={{
               // Custom styling for markdown elements
-              h1: (props) => <h1 style={{fontSize: '20px', fontWeight: 'bold', margin: '16px 0 8px 0', color: '#1f2937'}} {...props} />,
-              h2: (props) => <h2 style={{fontSize: '18px', fontWeight: 'bold', margin: '14px 0 6px 0', color: '#1f2937'}} {...props} />,
-              h3: (props) => <h3 style={{fontSize: '16px', fontWeight: 'bold', margin: '12px 0 6px 0', color: '#1f2937'}} {...props} />,
+              h1: ({children, ...props}) => {
+                // Only render if there's content
+                if (!children || (Array.isArray(children) && children.every(child => !child))) {
+                  return null;
+                }
+                return <h1 style={{fontSize: '20px', fontWeight: 'bold', margin: '16px 0 8px 0', color: '#1f2937'}} {...props}>{children}</h1>;
+              },
+              h2: ({children, ...props}) => {
+                // Only render if there's content
+                if (!children || (Array.isArray(children) && children.every(child => !child))) {
+                  return null;
+                }
+                return <h2 style={{fontSize: '18px', fontWeight: 'bold', margin: '14px 0 6px 0', color: '#1f2937'}} {...props}>{children}</h2>;
+              },
+              h3: ({children, ...props}) => {
+                // Only render if there's content
+                if (!children || (Array.isArray(children) && children.every(child => !child))) {
+                  return null;
+                }
+                return <h3 style={{fontSize: '16px', fontWeight: 'bold', margin: '12px 0 6px 0', color: '#1f2937'}} {...props}>{children}</h3>;
+              },
               p: (props) => <p style={{margin: '8px 0', color: '#374151'}} {...props} />,
               strong: (props) => <strong style={{fontWeight: 'bold', color: '#1f2937'}} {...props} />,
               em: (props) => <em style={{fontStyle: 'italic', color: '#374151'}} {...props} />,

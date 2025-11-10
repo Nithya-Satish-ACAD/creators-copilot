@@ -17,5 +17,8 @@ reportlab==4.0.4
 Jinja2==3.1.6
 pymongo==4.13.2
 PyMuPDF==1.26.3
+PyPDF2==3.0.1
 markdown==3.8.2
 html2text==2025.4.15
+flask==3.0.3
+pdfplumber==0.11.7

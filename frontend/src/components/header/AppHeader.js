@@ -1,9 +1,11 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../../services/auth";
 
 export default function AppHeader({ onAdd, onLogout, title = "Course Copilot" }) {
   const currentUser = getCurrentUser();
+  const navigate = useNavigate();
   return (
     <div style={{
       height: 64,
@@ -19,23 +21,19 @@ export default function AppHeader({ onAdd, onLogout, title = "Course Copilot" })
       zIndex: 10,
       boxShadow: '0 2px 12px #2563eb0a',
     }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        <div style={{
-          background: "#2563eb",
-          color: "#fff",
-          borderRadius: 12,
-          width: 40,
-          height: 40,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontWeight: 700,
-          fontSize: 22,
-          marginRight: 14,
-          boxShadow: '0 2px 8px #2563eb22'
-        }}>
-          C
-        </div>
+      <div 
+        style={{ display: "flex", alignItems: "center", gap: 16, cursor: "pointer" }}
+        onClick={() => navigate('/courses')}
+      >
+        <img 
+          src="/favicon.svg" 
+          alt="Course Copilot Logo" 
+          style={{
+            width: 40,
+            height: 40,
+            marginRight: 14,
+          }}
+        />
         <span style={{ fontWeight: 700, fontSize: 22, color: "#222", letterSpacing: 0.5 }}>{title}</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>

@@ -6,7 +6,7 @@ import os
 import io
 from pathlib import Path
 from ..services import openai_service
-from ..services.mongo import get_course, get_resources_by_course_id, create_resource, delete_resource as delete_resource_in_db
+from ..services.mongo import get_course, get_resources_by_course_id, create_resource, get_resource_by_course_id_and_resource_name, delete_resource as delete_resource_in_db
 from ..services.openai_service import create_file, connect_file_to_vector_store
 from ..utils.course_pdf_utils import generate_course_pdf
 from ..utils.verify_token import verify_token
@@ -27,6 +27,10 @@ class DeleteResponse(BaseModel):
 
 class ResourceCreateResponse(BaseModel):
     message: str
+
+class ResourceViewResponse(BaseModel):
+    resource_name: str
+    content: str
 
 def check_course_exists(course_id: str):
     # check if the course exists
@@ -163,23 +167,35 @@ def delete_resource(course_id: str, resource_name: str, user_id: str = Depends(v
         logger.error(f"Error deleting resource: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-# @router.get("/courses/{course_id}/resources/{resource_name}/view")
-# def view_resource(course_id: str, resource_name: str, user_id: str = Depends(verify_token)):
-#     # 1. Check course exists
-#     check_course_exists(course_id)
-#     # 2. Check resource exists
-#     resources = get_resources_by_course_id(course_id)
-#     if not resources:
-#         raise HTTPException(status_code=404, detail="Resource not found")
-#     resource = next((r for r in resources if r.get("resource_name") == resource_name), None)
-#     if not resource:
-#         raise HTTPException(status_code=404, detail="Resource not found")
-#     # 3. Find file path
-#     path_to_file = resource.get("file_path")
-#     if not path_to_file:
-#         raise HTTPException(status_code=404, detail="File path not found")
-#     # 4. Return FileResponse
-#     return FileResponse(path_to_file, filename=resource_name)
+@router.get("/courses/{course_id}/resources/{resource_name}/content", response_model=ResourceViewResponse)
+def get_resource_content(course_id: str, resource_name: str, user_id: str = Depends(verify_token)):
+    """Get resource content for viewing"""
+    try:
+        # 1. Check course exists
+        check_course_exists(course_id)
+        
+        # 2. Get resource from database
+        resource = get_resource_by_course_id_and_resource_name(course_id, resource_name)
+        print(resource)
+        print(resource_name)
+        print(resource["content"])
+        if not resource:
+            raise HTTPException(status_code=404, detail="Uploaded resources can't be viewed")
+        
+        # 3. Check if content exists
+        content = resource.get("content")
+        logger.info(f"Content found: {content is not None}, Length: {len(content) if content else 0}")
+        if not content:
+            raise HTTPException(status_code=404, detail="Uploaded resources can't be viewed")
+        
+        # 4. Return resource content
+        return ResourceViewResponse(resource_name=resource_name, content=content)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error getting resource content: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 # @router.get("/courses/{course_id}/resources/{resource_name}/download")
 # def download_resource(course_id: str, resource_name: str, user_id: str = Depends(verify_token)):

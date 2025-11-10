@@ -1,4 +1,4 @@
-from ..services.storage_course import storage_service
+from ..services.mongo import get_course, get_resources
 from typing import Dict, Any, Optional
 
 # This function gathers all input variables needed for prompt generation
@@ -13,7 +13,7 @@ def gather_input_variables(course_id: str, user_id: Optional[str] = None, thread
     - user_input: Any user-provided variables (overrides defaults)
     Returns a dict with all variables needed for prompt rendering.
     """
-    course = storage_service.get_course(course_id, user_id)
+    course = get_course(course_id, user_id)
     if not course:
         raise ValueError(f"Course {course_id} not found or unauthorized.")
 
@@ -25,8 +25,9 @@ def gather_input_variables(course_id: str, user_id: Optional[str] = None, thread
     input_vars["pedagogical_components"] = course.get("settings", {}).get("pedagogical_components", [])
     input_vars["ask_clarifying_questions"] = course.get("settings", {}).get("ask_clarifying_questions", False)
 
+
     # Gather resource file names (checked-in files)
-    resources = storage_service.get_resources(course_id, thread_id=thread_id, user_id=user_id)
+    resources = get_resources(course_id, thread_id=thread_id, user_id=user_id)
     print("[gather_input_variables] Resources fetched:", resources)
     file_names = [r.get("title", r.get("fileName", "Unknown file")) for r in resources if r.get("status") == "checked_in"]
     input_vars["file_names"] = file_names

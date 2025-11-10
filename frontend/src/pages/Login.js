@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { login } from "../services/auth";
 
@@ -7,7 +7,6 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [keepSignedIn, setKeepSignedIn] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ export default function Login() {
     const handleMessage = (event) => {
       if (event.data && event.data.type === 'GOOGLE_LOGIN_SUCCESS') {
         // Handle successful Google login
-        console.log('Google login successful:', event.data.user);
         
         // Store complete user object
         localStorage.setItem('user', JSON.stringify({
@@ -43,7 +41,7 @@ export default function Login() {
     setError("");
 
     try {
-      const loginResp = await login(email, password);
+      await login(email, password);
       navigate("/courses");
     } catch (err) {
       setError(err.detail || "Login failed. Please check credentials.");
@@ -80,17 +78,15 @@ export default function Login() {
       }}>
         {/* App Icon and Title */}
         <div style={{ display: "flex", alignItems: "center", marginBottom: 24 }}>
-          <div style={{
-            background: "#2563eb", color: "#fff", borderRadius: 8,
-            width: 36, height: 36, display: "flex", alignItems: "center",
-            justifyContent: "center", fontWeight: 700, fontSize: 22, marginRight: 12
-          }}>
-            C
-          </div>
+          <img
+            src={process.env.PUBLIC_URL + "/favicon.svg"}
+            alt="Course Copilot Logo"
+            style={{ width: 36, height: 36, borderRadius: 8, marginRight: 12, boxShadow: "0 2px 8px #0001" }}
+          />
           <span style={{ fontWeight: 600, fontSize: 20, color: "#222" }}>Course Copilot</span>
         </div>
 
-        {/* Google Sign-In (Placeholder Only) */}
+        {/* Google Sign-In */}
         <button
           type="button"
           style={{
@@ -127,7 +123,7 @@ export default function Login() {
                 onChange={e => setEmail(e.target.value)}
                 required
                 disabled={loading}
-                style={{ width: "100%", padding: "10px 12px", border: "1px solid #ddd", borderRadius: 6, marginTop: 6, fontSize: 15 }}
+                style={{ width: "100%", height: 40, padding: "0 12px", border: "1px solid #ddd", borderRadius: 6, marginTop: 6, fontSize: 15, boxSizing: "border-box" }}
               />
             </div>
             <div style={{ marginBottom: 8, position: "relative" }}>
@@ -138,7 +134,7 @@ export default function Login() {
                 onChange={e => setPassword(e.target.value)}
                 required
                 disabled={loading}
-                style={{ width: "100%", padding: "10px 12px", border: "1px solid #ddd", borderRadius: 6, marginTop: 6, fontSize: 15 }}
+                style={{ width: "100%", height: 40, padding: "0 12px", border: "1px solid #ddd", borderRadius: 6, marginTop: 6, fontSize: 15, boxSizing: "border-box" }}
               />
               <span
                 style={{
@@ -151,7 +147,7 @@ export default function Login() {
               </span>
             </div>
 
-            {/* Remember me and Forgot password */}
+            {/* Remember me and Forgot password
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
               <label style={{ display: "flex", alignItems: "center", fontSize: 15, color: "#444", fontWeight: 500 }}>
                 <input
@@ -163,7 +159,7 @@ export default function Login() {
                 Keep me signed in
               </label>
               <Link to="/forgot-password" style={{ color: "#2563eb", fontSize: 14, textDecoration: "none", fontWeight: 400 }}>Forgot password?</Link>
-            </div>
+            </div> */}
 
             {/* Error Display */}
             {error && <div style={{ color: "red", marginBottom: 8 }}>{error}</div>}
